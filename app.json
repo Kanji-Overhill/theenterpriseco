@@ -2,11 +2,24 @@
   "name": "The Enterprise Co",
   "description": "Official Page for The Enterprise Co",
   "keywords": ["python", "django" ],
-  "addons": [ "heroku-postgresql" ],
   "env": {
     "SECRET_KEY": {
       "description": "The secret key for the Django application.",
       "generator": "secret"
     }
-  }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "papertrail",
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
 }

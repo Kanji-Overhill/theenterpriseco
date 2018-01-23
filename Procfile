@@ -1,1 +1,1 @@
-web: gunicorn theenterpriseco.wsgi
+web gunicorn app:app

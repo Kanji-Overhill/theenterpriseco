@@ -9,3 +9,6 @@ whitenoise==3.3.1
 # django_cleanup
 # imagekit
 # Pillow
+
+# temp
+Flask==0.12.2
