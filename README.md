@@ -11,7 +11,7 @@ Backend   @xtornasol512
 
 1. Instalar Dependencias
 ```
-$ pip install requirements
+$ pip install -r requirements.txt
 
 ```
 2. Crear branch de develop
