@@ -1,0 +1,12 @@
+*.pyc
+temp/
+
+enterpriseback/enterpriseback/conf/
+enterpriseback/static/
+enterpriseback/enterpriseback/local_set.py
+enterpriseback/media
+
+
+*.dbsqlite3
+*.sqlite3
+*.swp

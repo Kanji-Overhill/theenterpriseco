@@ -1,4 +1,4 @@
-Django==1.9.7
+# Django==1.9.7
 # Heroku requirements
 dj-database-url==0.4.2
 gunicorn==19.7.1
