@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Administrador | The Enterprise Company</title>
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/slick-theme.css"/>
+    <link rel="stylesheet" href="{{STATIC_URL}}css/main-admin.css">
+    {% block style %}{% endblock %}
+	<link rel="shortcut icon" type="image/x-icon" href="{{STATIC_URL}}images/favicon.png" />
+</head>
+<body>
+    {%if user.is_authenticated%}
+	<header>
+	    <a href="/admin" class="logo"><img src="{{STATIC_URL}}images/logo.png" alt=""></a>
+        <a href="/log_out" class="sing-out">Sign Out</a>
+        <p class="sing-out">{{user.username}}</p>
+	</header>
+    {%endif%}
+    {% block main %}{% endblock main %}
+	<div class="footer-sesion">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+    </div> 
+</body>
+<script src="{{STATIC_URL}}js/scripts.js"></script>
+{% block morescripts %}{% endblock morescripts %}
+</html>

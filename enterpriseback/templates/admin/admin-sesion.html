@@ -1,0 +1,39 @@
+{% extends "admin/adminBase.html" %}
+
+    {% block style %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/main-admin.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}css/styles-admin.css">
+    {% endblock style %}
+
+    {%block main%}
+    <div class="sesion-sec-1">
+        <div class="logo-sesion">
+            <a href="/"><img src="{{STATIC_URL}}images/logo.png" alt=""></a>
+        </div>
+        <div class="login-form">
+            <form id="Aform" method='post' name="form" method="post" action="">{% csrf_token %}
+                <h3>Admin module</h3>{% if error %}
+                <span class="error">{{error}}</span>
+            {% endif %}<div>
+                <div>
+                    <label>Email Address or User Name:</label>
+                    <input name="username"type="text" required value="{{username|escape}}">
+                    <label>Password:</label>
+                    <input name="password"type="password" required>
+                    <input type="submit" value="Sign in">
+                </div>
+            </form>
+        </div>
+        <div class="login-form display-none">
+            <form action="admin-home.html" method="POST">
+                <h3>Password recovery</h3>
+                <span class="error display-none">* Can't find that email in our database</span>
+                <div>
+                    <label>Enter your email address and we will send you a link to reset your password.</label>
+                    <input type="email">
+                    <input type="submit" value="Sent password reset email">
+                </div>
+            </form>
+        </div>
+    </div>
+    {%endblock main%}

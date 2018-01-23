@@ -1,0 +1,19 @@
+Move Out Request | Web Form sending by {{name|upper}}
+Name: {{name}}
+        
+Adress: {{adress}}
+        
+Unit number: {{unit_number}}
+        
+Phone number: {{phone_number}}
+        
+Email: {{email}}
+        
+Request Move Out Date: {{request_move_out_date}}
+        
+City: {{city}} 
+        
+State : {%if state == "2" %}Texas {% else%}California {%endif %}
+        
+ZIP CODE: {{zip_code}}
+        

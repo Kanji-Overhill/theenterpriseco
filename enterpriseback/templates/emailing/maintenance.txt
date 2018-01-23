@@ -1,0 +1,20 @@
+Maintenance Request | Web Form Message sending by  {{f.name.value|upper}}
+Name: {{f.name.value}}
+Adress: {{f.adress.value}}
+        
+Email: {{f.email.value}}
+        
+Phone number: {{f.phone_number.value}}
+        
+Unit number: {{f.unit_number.value}}
+        
+Prefer method of contact: {% if f.contact.value == "1" %}Phone {% elif f.contact.value == "2" %} Email{% endif %}
+        
+Have Pets: {% if f.pets.value == "1" %}Yes {% elif f.pets.value == "2" %}No {% endif %}
+        {% if f.kind_pet.value %}
+            Kind of pet: {{f.kind_pet.value}}
+        {% endif %}
+        
+Option Maintenance: {{f.option_maintenance.value}}
+        
+Comment: {{f.description.value}}

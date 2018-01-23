@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <h3>Maintenance Request | Web Form Message sending by  {{f.name.value|upper}}</h3>
+
+
+        <p><b>Name</b>: {{f.name.value}}</p>
+        <p><b>Adress</b>: {{f.adress.value}}</p>
+        <p><b>Email</b>: {{f.email.value}}</p>
+        <p><b>Phone number</b>: {{f.phone_number.value}}</p>
+        <p><b>Unit number</b>: {{f.unit_number.value}}</p>
+        <p><b>Prefer method of contact</b>:{% if f.contact.value == "1" %}Phone {% elif f.contact.value == "2" %} Email{% endif %}
+        <p><b>Have Pets</b>: {% if f.pets.value == "1" %}Yes {% elif f.pets.value == "2" %}No {% endif %}</p>
+        {% if f.kind_pet.value %}
+            <p> <b>Kind of pet</b>: {{f.kind_pet.value}}</p>
+        {% endif %}
+        <p><b>Option Maintenance</b>: {% if f.option_maintenance.value == "1" %}I do not give The Enterprise Company, and/or its authorized third-party, independent contractor, permission to enter my unit to perform the requested maintenance unless I am present. {% elif f.option_maintenance.value == "2" %} I give The Enterprise Company, and/or its authorized third party independent contractor, permission to enter my dwelling while I am not there to complete the requested repairs below. {% endif %}</p>
+        <p><b>Comment</b>: {{f.description.value}}</p>
+
+
+    </body>
+</html>

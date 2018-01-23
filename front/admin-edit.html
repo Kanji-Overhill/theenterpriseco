@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Administrador | The Enterprise Company</title>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" href="css/main-admin.css">
+	<link rel="stylesheet" href="css/styles-admin-edit.css">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+</head>
+<body>
+	<header>
+	    <a href="admin-home.html" class="logo"><img src="images/logo.png" alt=""></a>
+        <a href="admin-sesion.html" class="sing-out">Sign Out</a>
+	</header>
+	<main>
+	<form action="" method="POST">
+        <section class="edit-sec-1">
+        	<div class="edit-contain-main">
+        		<div class="edit-contain-info">
+        			<p class="titulo">
+        				<b>Address</b><br>
+        				360 Monte vista Ave.
+        			</p>
+        			<label>Number of Unit:</label> 
+        			<input type="text" placeholder="E.g. 2335">
+        			<label>Manager name:</label>
+        			<input type="text" placeholder="E.g. John Williams">
+                    <p class="titulo-edit-2">unit information</p>
+        			<div class="unit-information">
+        				<div><p>Type:</p><input type="text" placeholder="E.g. Townhome"></div>
+        				<div><p>Bedrooms:</p><input type="number" placeholder="-None-"></div>
+        				<div><p>Bathrooms:</p><input type="number" placeholder="-None-"></div>
+        				<div><p>Rent:</p><input type="text" placeholder="Amount of money per month"></div>
+        				<div><p>Deposit:</p><input type="text" placeholder="Amount of money $$$"></div>
+        				<div><p>Parking:</p><input type="text" placeholder="Garage"></div>
+        				<div><p>Pets:</p><input type="text" placeholder="E.g. Dogs and Cats Not allowed"></div>
+        				<div><p>Utilities:</p><input type="text" placeholder="E.g. Garbage Included"></div>
+        				<div><p>Kitchen:</p><input type="text" placeholder="E.g. Granite counters, stainless steel full size appliances"></div>
+        				<div><p>Laundry:</p><input type="text" placeholder="E.g. In Unit"></div>
+        				<div><p>Lease Term:</p><input type="text" placeholder="E.g. Year Lease"></div>
+        			</div>
+        			<div class="unit-description">
+        				<p>Unit Description</p>
+        				<textarea placeholder="E.g. Spacious studio, etc."></textarea>
+        				<p>Location Description</p>
+        				<ul>
+        					<li>City of Oakland</li>
+        					<li>Alameda County</li>
+        					<li>South of Lake Merrit, Parkway District</li>
+        					<li>Cross streets are Lester St. and Acton Place</li>
+        					<li>1 mile to lake Merrit BART</li>
+        				</ul>
+        			</div>
+        		</div>
+        		<div class="edit-contain-images">
+        			<input type="file" id="file">
+                    <label for="file"><img src="images/add-image.png" alt=""></label>
+                    <div class="slid-edit-1">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p class="titulo-edit-2">Neighborhood Amenities</p>
+                    <div class="slid-edit-2" id="slid-neigh">
+                         <div style="background-image: url(images/about-sec-1.jpg);">
+                             <div class="caption">
+                                 <p>LES Coleman</p>
+                             </div>
+                         </div>
+                        <div style="background-image: url(images/forms.jpg);">
+                            <div class="caption">
+                                 <p>LES Coleman</p>
+                             </div>
+                        </div>
+                        <div style="background-image: url(images/home-1.jpg);">
+                            <div class="caption">
+                                 <p>LES Coleman</p>
+                             </div>
+                        </div>
+                        <div style="background-image: url(images/home-2.jpg);">
+                            <div class="caption">
+                                 <p>LES Coleman</p>
+                             </div>
+                        </div>
+                          <div style="background-image: url(images/about-sec-1.jpg);">
+                              <div class="caption">
+                                 <p>LES Coleman</p>
+                             </div>
+                          </div>
+                        <div style="background-image: url(images/forms.jpg);">
+                            <div class="caption">
+                                 <p>LES Coleman</p>
+                             </div>
+                        </div>
+                        <div style="background-image: url(images/home-1.jpg);">
+                            <div class="caption">
+                                 <p>LES Coleman</p>
+                             </div>
+                        </div>
+                        <div style="background-image: url(images/home-2.jpg);">
+                            <div class="caption">
+                                 <p>LES Coleman</p>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="slid-edit-3" id="slid-neigh2">
+                        <div style="background-image: url(images/about-sec-1.jpg);"></div>
+                        <div style="background-image: url(images/forms.jpg);"></div>
+                        <div style="background-image: url(images/home-1.jpg);"></div>
+                        <div style="background-image: url(images/home-2.jpg);"></div>
+                          <div style="background-image: url(images/about-sec-1.jpg);"></div>
+                        <div style="background-image: url(images/forms.jpg);"></div>
+                        <div style="background-image: url(images/home-1.jpg);"></div>
+                        <div style="background-image: url(images/home-2.jpg);"></div>
+                    </div>
+        		</div>
+                <input type="submit" value="Save changes">
+        	</div>
+        </section>
+    </form>
+    </main>
+	<div class="footer-sesion">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+    </div> 
+</body>
+<script src="js/scripts.js"></script>
+</html>

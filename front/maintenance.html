@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>The Enterprise Company</title>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/styles-maintenance.css">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+</head>
+<body>
+	<header>
+	    <a class="responsive-menu">
+	    	<span></span>
+	    	<span></span>
+	    	<span></span>
+	    </a>
+	    <a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
+		<nav>
+			<ul class="menu-principal">
+				<li><a href="index.html">Home</a></li>
+				
+				<li><a href="rentals.html">Rentals</a></li>
+				<li id="resident">
+				    <a id="resident-link" href="tenants.html">Tenant resources</a>
+                    <ul class="menu-secundario">
+                    	<li><a href="forms.html">Forms</a></li>
+                    	<li><a href="faq.html">FAQ</a></li>
+                    	<li><a class="active" href="maintenance.html">Maintenance</a></li>
+                    	<li><a href="move.html">Move Out</a></li>
+                    </ul>
+				</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="maintenance-sec-1" style="background-image: url(images/maintenance.jpg); background-position-y: 70%;">
+			<h1><b>Maintenance</b><br>Request</h1>
+		</section>
+		<section class="maintenance-sec-2">
+			<div class="title-rent-head">
+				<p><b>Maintenance request</b></p>
+			</div>
+            <p class="description">Having trouble with a maintenance issue? Please fill out the form below and be as descriptive as possible - we will get back to you with a response as soon as we can.</p>
+            <div class="title-rent-head">
+                <p><b>Contact Form</b></p>
+            </div>
+		</section>
+		<section class="maintenance-sec-3">
+            <form action="#" method="POST">
+                <div class="formulario-mid">
+                    <input type="text" class="full" placeholder="Your name">
+                    <input type="text" class="full" placeholder="Address">
+                    <input type="text" class="full" placeholder="Unit number">
+                    <input type="text" class="full" placeholder="Phone number">
+                    <input type="email" class="full" placeholder="Email">
+                    <p class="full-p">Do you have photo to submit with you request? Please attach here</p>
+                    <input type="file">
+                </div>
+                <div class="formulario-mid">
+                    <div>
+                        <p class="p-radio">Preferred method of contact</p> <input type="radio" name="contact"><span>Phone</span><input name="contact" type="radio"><span>Email</span>
+                    </div>
+                    <div>
+                        <p class="p-radio">Do you have any pets</p> <input type="radio" name="pets"><span>Yes</span><input type="radio" name="pets"><span>No</span>
+                    </div>
+                    <div>
+                        <p class="p-parrafo">if so, what kind?</p><input type="text" class="input-inline">
+                    </div>
+                    <div>
+                        <p class="p-parrafo">Please Choose an option:</p>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="option-maintenance"><p>I do not give permission to enter without my presence. I must be present during the repair appointment.</p>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="option-maintenance"><p>Repair or damage caused by your negligence or misuse is your responsibility. In such cases, repairs will be made, however you will be charged for the cost of the labor and materials. Damages or plumbing stoppages caused by your negligence or misuse will be paid by you.</p>
+                    </div>
+                </div>  
+                <div class="formulario-full">
+                    <div>
+                        <textarea name="" id=""></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+            <p class="p-fot"><b>Please note:</b><br>
+            Repair or damage caused by your negligence or misuse is yout responsibility. In such cases, repairs will made, but you will be charged for the cost of the labor and materials. Damages or plumbing stoppages caused by your negligence or misuse will be paid by you.</p> 
+        </section>
+	</main>
+	<footer>
+		<div class="footer-sec-1">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				
+				<li><a href="rentals.html">Rentals</a></li>
+				<li><a href="tenants.html">Tenant resources</a></li>
+				<li><a href="faq.html">FAQ</a></li>
+				
+				<li><a href="forms.html">Forms</a></li>
+				
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		<div class="footer-sec-2">
+			<div>
+				<a href="index.html"><img src="images/logo-blanco.png" alt=""></a>
+			</div>
+			<div>
+				<p>
+					2909 McClure Street Oakland, CA 94609<br>
+					(510) 444 0876<br>
+					theenterprisecom@gmail.com<br>
+					DRE# 00516533
+				</p>
+			</div>
+		</div>
+		<div class="footer-sec-3">
+			<p>Copyright © 2016, The Enterprise Company. All Rights Reserved.</p>
+		</div>
+	</footer>
+</body>
+<script src="js/scripts.js"></script>
+<script language='javascript' type='text/javascript'>
+    $(document).ready(function () {
+        var firstInput = $('form').find('input[type=text],input[type=password],input[type=radio],input[type=checkbox],textarea,select').filter(':visible:first');
+        if (firstInput != null) {
+            firstInput.focus();
+        }
+    });
+</script>
+</html>

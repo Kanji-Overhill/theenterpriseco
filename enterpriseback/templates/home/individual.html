@@ -1,0 +1,167 @@
+{% extends "base/base.html" %}
+{% block title %} Department | The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% load humanize %}
+{% load home_extras %}
+{% block morestyles %}
+    <link rel="stylesheet" href="{% static "css/styles-individual.css" %}">
+{% endblock morestyles %}
+{% block content %}
+    
+        
+    
+    <header> 
+        <a class="responsive-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+        <nav>
+            <ul class="menu-principal">
+                <li><a class="active" href="/">Home</a></li>
+                
+                <li><a href="/rentals">Rentals</a></li>
+                <li id="resident">
+                    <a id="resident-link" href="/tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                        <li><a href="/forms">Forms</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/maintenance">Maintenance</a></li>
+                        <li><a href="/move">Move Out</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% if not error %}
+    <main>
+        <section class="edit-sec-1">
+            <div class="edit-contain-main">
+                <div class="edit-contain-info">
+                    <p class="titulo">
+                        {{department.building}}
+                    </p>
+                    <label>For an Appointment to View, Contact:</label>
+                    <span>{% if manager %}
+                        {{manager.user.first_name|upper}}
+                        {% else %}
+                        WILLIAM
+                    {% endif %}</span>
+                    <a class="manager-contact" href="mailto:{% if manager %}{{manager.user.email}}{% else %}theenterprisecom@gmail.com{% endif %}">
+                        Contact Manager
+                    </a>
+                    <p class="titulo-edit-2">Unit information</p>
+                    <div class="unit-information">
+                        <div><p>Apartment Number:</p><b>{{department.number_of_apartment}}</b></div>
+                        <div><p>Type:</p><b>{{department.type_department}}</b></div>
+                        <div><p>Bedrooms:</p><b>{{department.bedrooms|bedroomcheck}}</b></div>
+                        <div><p>Bathrooms:</p><b>{{department.bathrooms}}</b></div>
+                        <div><p>Rent:</p><b>${{department.rent|floatformat:2|intcomma}}</b></div>
+                        <div><p>Deposit:</p><b>${{department.deposit|floatformat:2|intcomma}}</b></div>
+                        <div><p>Parking:</p><b>{{department.parking}}</b></div>
+                        <div><p>Pets:</p><b>{{department.pets}}</b></div>
+                        <div><p>Utilities:</p><b>{{department.utilities}}</b></div>
+                        <div><p>Kitchen:</p><b>{{department.kitchen}}</b></div>
+                        <div><p>Laundry:</p><b>{{department.laundry}}</b></div>
+                        <div><p>Lease Term:</p><b>{{department.lease_term}}</b></div>
+                    </div>
+                    <div class="unit-description">
+                        <p>Unit Description</p>
+                        <ul>
+                            <li>{{department.unit_description|linebreaksbr}}</li>
+                            
+                        </ul>
+                        <p>Location Description</p>
+                        <ul>
+                            <li>{{department.building.location_description|linebreaksbr}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="edit-contain-images">
+                    <div class="slid-edit-2" id="slid-main" >
+                        {% if galery %}
+                        {% for photo in galery %}
+                        <div style="background-image: url({{photo.picture.url}});"></div>
+                        {% endfor %}
+                        {% else %}
+                            <div style="background-image: url(http://placehold.it/600x500&text=No+Image+Galery);"></div>
+                        {% endif %}
+                        
+                    </div>
+                    <div class="slid-edit-3" id="slid-main2">
+                        {% if galery %}
+                        {% for photo in galery  %}
+                        <div style="background-image: url({{photo.picture.url}});"></div> 
+                        {% endfor %}
+                        {% else %}
+                            <div style="background-image: url(http://placehold.it/200x150);"></div>
+                        {% endif %}
+                    
+                    </div>
+                    <p class="titulo-edit-2">Neighborhood Amenities</p>
+                    <div class="slid-edit-2" id="slid-neigh">
+                    {% if atraction %}
+                    {% for photo in atraction %}
+                        <div style="background-image: url({{photo.picture.url}});">
+                             <div class="caption">
+                                 <p>{{photo.titulo_img}}</p>
+                             </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                            <div style="background-image: url(http://placehold.it/600x450);"></div>
+                            <div class="caption">
+                                 <p>Not Neighborhood Amenities</p>
+                             </div>
+                    {% endif %}
+                        
+                    </div>
+                    <div class="slid-edit-3" id="slid-neigh2">
+                        {% if atraction %}
+                        {% for photo in atraction %}
+                            <div style="background-image: url({{photo.picture.url}});">
+                            </div>
+                        {% endfor %}
+                        {% else %}
+                                <div style="background-image: url(http://placehold.it/200x150);"></div>
+                               
+                        {% endif %}
+                    </div>
+                    <form>
+                        <input type="hidden" id="geocomplete" placeholder="Adress Hidden" size="90" />
+                    </form>
+    
+                    <div class="map_canvas"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {%endif%}
+    {% if error %}
+        <main>
+            <h1>{{error}}</h1>
+        </main>
+    {% endif %}
+
+{% endblock content %}
+{% block morescripts %}
+    
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBFsw3hfvVqgCzoMuKxEH_FyF5ua7lCVPY&amp;libraries=places"></script>
+    <script src="{% static "js/jquery.geocomplete.min.js" %}"></script>
+    <script>
+      $(function(){
+        
+        var options = {
+          map: ".map_canvas",
+          location: "{{department.building.adress}}"
+        };
+        
+        $("#geocomplete").geocomplete(options);
+        
+      });
+    </script>
+{% endblock morescripts %}
+
+    

@@ -1,0 +1,7 @@
+The Enterprise Contact Web Form | sending by {{name|upper}}
+
+Name: {{name}}
+Phone number: {{phone_number}}
+Email: {{email}}
+Subject: {{subject}}
+Comment: {{description}}

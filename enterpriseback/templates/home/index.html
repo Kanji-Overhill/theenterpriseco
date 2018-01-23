@@ -1,0 +1,138 @@
+{% extends "base/base.html" %}
+{% block title %}The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% load humanize %}
+{% block morestyles %}
+	<link rel="stylesheet" href="{% static "css/styles-index.css" %}">
+{% endblock morestyles %}
+{% block content %}
+	<header> 
+	    <a class="responsive-menu">
+	    	<span></span>
+	    	<span></span>
+	    	<span></span>
+	    </a>
+	    <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+		<nav>
+			<ul class="menu-principal">
+				<li><a class="active" href="/">Home</a></li>
+				
+				<li><a href="/rentals">Rentals</a></li>
+				<li id="resident">
+				    <a id="resident-link" href="/tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                    	<li><a href="/forms">Forms</a></li>
+                    	<li><a href="/faq">FAQ</a></li>
+                    	<li><a href="/maintenance">Maintenance</a></li>
+                    	<li><a href="/move">Move Out</a></li>
+                    </ul>
+				</li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="fondocamb" class="index-sec-1" style="background-image: url({% static "images/home-1.jpg" %})">
+			<h1>The <b>Enterprise</b> Company</h1>
+			<a href="{% static "Rental_Application.pdf" %}">Rental application <img src="{% static "images/icon.png" %}" alt=""></a>
+		</section>
+		<section class="index-sec-2">
+		{% if departments %}
+			<div class="title-rent-head">
+				<p>Available Rentals</p>
+			</div>
+			<div class="slid-home">
+			{% for depa in departments %}
+				<div class="contenedor">
+					<div class="container-over">
+						<a href="/individual?id={{depa.depart.id}}">
+							<div class="imagen" style="background-image: url(
+                            {%if depa.depart.building.picture%}
+                            {{depa.depart.building.picture.url}}
+                            {%else%}
+                            {{STATIC_URL}}images/slid-1-home.jpg 
+                            {%endif%}
+                            )"></div>
+					        <div class="texto">
+					        <img src="{% static "images/marcador.png" %}" alt="">
+						    <p>{{depa.depart}}</p>
+					        <b>${{ depa.depart.rent|floatformat:2|intcomma }} / month</b>
+					        </div>
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+			</div>	
+		{% endif %}
+		{% if not departments %}
+			<div class="title-rent-head">
+				<p>There are currently no rentals available. Please check back soon.</p>
+			</div>
+			<div class="slid-home"></div>
+			
+		{% endif %}
+			
+			<div class="title-rent-head">
+				<p>About Us</p>
+			</div>
+			<p class="about-home">
+				 The Enterprise Company is comprised of a professional team with decades of real estate experience. Since 1980, our family owned and operated company has provided exceptional service to the Bay Area renters and owners.
+			</p>
+		</section>
+	</main>
+{% endblock content %}
+{% block morescripts %}
+<script>
+	$('.slid-home').slick({
+  infinite: false,
+  speed: 300,
+ {%comment%}If there is no departments,slidesToShow: 2 is the default {%endcomment%}
+{% if departments %}
+  {% if departments|length >= 4 %}
+  slidesToShow: 4,
+  {% elif departments|length == 3 %}
+  slidesToShow: 3,
+  {% elif departments|length == 2 %}
+  slidesToShow: 2,
+  {% elif departments|length == 1 %}
+  slidesToShow: 2,
+  {%endif%}
+{%endif%}
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 500,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+    {% if successmsg %}
+        alert('Message sent successfully');
+    {% endif %}
+</script>
+{% endblock morescripts %}
+	
+

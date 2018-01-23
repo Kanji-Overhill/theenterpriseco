@@ -1,0 +1,22 @@
+.fileupload-progress {
+    margin: 10px 0;
+}
+.fileupload-progress .progress-extended {
+    margin-top: 5px;
+}
+.error {
+  color: red;
+}
+
+@media (min-width: 481px) {
+  .navigation {
+    list-style: none;
+    padding: 0;
+  }
+  .navigation li {
+    display: inline-block;
+  }
+  .navigation li:not(:first-child):before {
+    content: "| ";
+  }
+}

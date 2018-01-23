@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>The Enterprise Company</title>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/styles-rentals.css">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+</head>
+<body>
+	<header>
+	    <a class="responsive-menu">
+	    	<span></span>
+	    	<span></span>
+	    	<span></span>
+	    </a>
+	    <a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
+		<nav>
+			<ul class="menu-principal">
+				<li><a href="index.html">Home</a></li>
+				
+				<li><a class="active" href="rentals.html">Rentals</a></li>
+				<li id="resident">
+				    <a id="resident-link" href="tenants.html">Tenant resources</a>
+                    <ul class="menu-secundario">
+                    	<li><a href="forms.html">Forms</a></li>
+                    	<li><a href="faq.html">FAQ</a></li>
+                    	<li><a href="maintenance.html">Maintenance</a></li>
+                    	<li><a href="move.html">Move Out</a></li>
+                    </ul>
+				</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="rentals-sec-1" style="background-image: url(images/rentals.jpg)">
+			<h1>The perfect <b>place</b></h1>
+			<a href="Rental_Application.pdf">Rental application <img src="images/icon.png" alt=""></a>
+		</section>
+		<section class="rentals-sec-2">
+			<div class="controls">
+                <button class="filter" data-filter="all">All</button>
+                <button class="filter" data-filter=".category-0">0 Bedroom</button>
+                <button class="filter" data-filter=".category-1">1 Bedroom</button>
+                <button class="filter" data-filter=".category-2">2 Bedroom</button>
+                <button class="filter" data-filter=".category-3">3+ Bedroom</button>
+            </div>
+            <div id="Container" class="container">
+            {% if departments %}
+            {% for depa in departments %}
+                <div class="mix category-0">
+                    <a href="/individual?id={{depa.id}}">
+                        <div class="container-imagen" style="background-image: url({{depa.building.picture.url}});"></div>
+                        <div class="text-contenedor">
+                        <p>{{depa.building.adress}}</p>
+                        <b>${{depa.rent|intcomma}} / month</b>
+                        </div>
+                    </a>
+                </div>   
+            {% endfor %}
+            {% endif %}
+                
+
+            <div class="gap"></div>
+            <div class="gap"></div>
+            </div>
+		</section>
+	</main>
+	<footer>
+		<div class="footer-sec-1">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				
+				<li><a href="rentals.html">Rentals</a></li>
+				<li><a href="tenants.html">Tenant resources</a></li>
+				<li><a href="faq.html">FAQ</a></li>
+
+				<li><a href="forms.html">Forms</a></li>
+				
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		<div class="footer-sec-2">
+			<div>
+				<a href="index.html"><img src="images/logo-blanco.png" alt=""></a>
+			</div>
+			<div>
+				<p>
+					2909 McClure Street Oakland, CA 94609<br>
+					(510) 444 0876<br>
+					theenterprisecom@gmail.com<br>
+					DRE# 00516533
+				</p>
+			</div>
+		</div>
+		<div class="footer-sec-3">
+			<p>Copyright © 2016, The Enterprise Company. All Rights Reserved.</p>
+		</div>
+	</footer>
+</body>
+<script src="js/scripts.js"></script>
+</html>

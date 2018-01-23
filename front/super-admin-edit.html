@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Administrador | The Enterprise Company</title>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" href="css/main-admin.css">
+	<link rel="stylesheet" href="css/styles-super-admin-edit.css">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+</head>
+<body>
+	<header>
+	    <a href="super-admin-home.html" class="logo"><img src="images/logo.png" alt=""></a>
+        <a href="admin-sesion.html" class="sing-out">Sign Out</a>
+	</header>
+	<main>
+	<form action="" method="POST">
+        <section class="edit-sec-1">
+        	<div class="edit-contain-main">
+        		<div class="edit-contain-info">
+        			<label>Address:</label>
+                    <select name="" id="">
+                        <option value="" disabled selected style="display: none;">Select Building</option>
+                        <option value="">Building 1</option>
+                        <option value="">Building 2</option>
+                        <option value="">Building 3</option>
+                        <option value="">Building 4</option>
+                        <option value="">Building 5</option>
+                    </select>
+        			<label>Manager:</label>
+        			<p class="select-manager">Manager select</p>
+                    <p class="titulo-edit-2">Unit Description</p>
+        			<div class="unit-information">
+        				<div><p>Type:</p><input type="text" placeholder="E.g. Townhome"></div>
+        				<div><p>Bedrooms:</p><input type="number" placeholder="-None-"></div>
+        				<div><p>Bathrooms:</p><input type="number" placeholder="-None-"></div>
+        				<div><p>Rent:</p><input type="text" placeholder="Amount of money per month"></div>
+        				<div><p>Deposit:</p><input type="text" placeholder="Amount of money $$$"></div>
+        				<div><p>Parking:</p><input type="text" placeholder="Garage"></div>
+        				<div><p>Pets:</p><input type="text" placeholder="E.g. Dogs and Cats Not allowed"></div>
+        				<div><p>Utilities:</p><input type="text" placeholder="E.g. Garbage Included"></div>
+        				<div><p>Kitchen:</p><input type="text" placeholder="E.g. Granite counters, stainless steel full size appliances"></div>
+        				<div><p>Laundry:</p><input type="text" placeholder="E.g. In Unit"></div>
+        				<div><p>Lease Term:</p><input type="text" placeholder="E.g. Year Lease"></div>
+        			</div>
+        			<div class="unit-description">
+        				<p>Unit Description</p>
+        				<textarea placeholder="E.g. Spacious studio, etc."></textarea>
+        				<p>Location Description</p>
+        				<textarea placeholder="E.g. Spacious studio, etc."></textarea>
+        			</div>
+        		</div>
+        		<div class="edit-contain-images">
+        			<input type="file" id="file">
+                    <label for="file"><img src="images/add-image.png" alt=""></label>
+                    <div class="slid-edit-1">
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                        <div><a class="close-slid my-button">X</a></div>
+                    </div>
+                    <p class="titulo-edit-2">Nearby Attractions</p>
+                    
+        		</div>
+                <input type="submit" value="Save">
+        	</div>
+        </section>
+    </form>
+    <div id="element_to_pop_up">
+            <p>Are you sure want to remove this item and all information?</p>
+            <div class="links">
+                <a href="super-admin-edit.html">Edit</a>
+                <a class="delete my-button">Delete</a>
+            </div>
+            <b>I want to <a href="">edit</a></b>
+        </div>
+    </main>
+	<div class="footer-sesion">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+    </div> 
+</body>
+<script src="js/scripts.js"></script>
+</html>

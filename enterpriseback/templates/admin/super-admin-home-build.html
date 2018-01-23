@@ -1,0 +1,51 @@
+{% extends "admin/super-admin-home.html" %}
+
+{% block mainBuilding %}
+            {%comment%}seccion Buildings{%endcomment%}
+            {%if buildings%}
+                {%for build in buildings%}
+                <div class="mix category-2">
+                    <a href="">
+                        <div class="container-imagen" style="background-image: url({%if build.picture%}{{build.picture.url}}{%else%}{{STATIC_URL}}images/slid-1-home.jpg{%endif%});"></div>
+                        <div class="text-contenedor">
+                        <p>{{build.adress}}</p>
+                        {%comment%}<b>$1,500 / month</b>{%endcomment%}
+                        </div>
+                    </a>
+                    <div class="mix-color">
+                        <div class="links">
+                            <a href="/admin/building?id={{build.id}}">Edit</a>
+                            <a class="delete remove-building{{build.id}}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="element_to_pop_up building-remove-{{build.id}}">
+                    <p>Are you sure want to remove this item and all information?</p>
+                    <div class="links">
+                        
+                        <form method="post" action="">
+                        <a href="/admin/building?id={{build.id}}">Edit</a>
+                        <input type="submit"  name="removeBuild" value="Remove"> 
+                        {% csrf_token %}
+                        <input type='hidden' name='id' value='{{build.id}}' />
+                        </form>
+                    </div>
+                </div>
+
+                {%endfor%}
+            {%else%}
+                <p>No Buildings avaliable</p>
+            {%endif%}
+{% endblock mainBuilding %}
+
+{% block scriptsBuild %}
+    {%if buildings%}
+    {%for build in buildings%}
+        $('.remove-building{{build.id}}').bind('click', function(e) {
+            e.preventDefault();
+            $('.building-remove-{{build.id}}').bPopup();
+        });
+    {%endfor%}
+    {%endif%}
+{% endblock scriptsBuild %}

@@ -1,0 +1,58 @@
+{% extends "admin/adminBase.html" %}
+
+
+
+{%block main%}
+	<main>
+        <h1>Buildings and Managers</h1>
+		<section class="rentals-sec-2">
+            {% if error %}
+                <span class="error">{{error}}</span>
+            {% endif %}
+			<div class="controls">
+                <button class="filter {% if activeb %}active{% endif %}" id="buildings" data-filter=".category-2">Buildings</button>
+                <button class="filter {% if activem %}active{% endif %}" id="managers" data-filter=".category-1">Managers</button>
+                <button class="filter {% if actived %}active{% endif %}" id="apartaments" data-filter=".category-0">Apartments</button>
+            </div>
+
+            <a class="add add-active" href="admin/building" id="buildings1">Add Building</a>
+            <a class="add edit-manager-new" id="managers1">Add Manager</a>
+            <a class="add" href="admin/department" id="apartaments1">Add Apartments</a>
+
+            <div id="Container2" class="container">
+
+                {% block mainManager %}{% endblock mainManager %}
+
+                {% block mainBuilding %}{% endblock mainBuilding %}
+
+                {% block mainDepatment %}{% endblock mainDepatment %}
+
+                <div class="gap"></div>
+                <div class="gap"></div>
+            </div>
+		</section>
+
+	</main>
+{%endblock main%}
+
+{% block morescripts %}
+
+    <script type="text/javascript">
+        $('.edit-manager-new').bind('click', function(e) {
+
+                    // Prevents the default action to be triggered. 
+                    e.preventDefault();
+
+                    // Triggering bPopup when click event is fired
+                    $('#manager-edit-new').bPopup();
+
+                });
+
+    {% block scriptsBuild %}{% endblock scriptsBuild %}
+
+    {% block scriptsApartment %}{% endblock scriptsApartment %}
+
+    {% block scriptsManager %}{% endblock scriptsManager %}
+    </script>
+    
+{% endblock morescripts %}

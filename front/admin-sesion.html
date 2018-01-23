@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Administrador | The Enterprise Company</title>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" href="css/main-admin.css">
+	<link rel="stylesheet" href="css/styles-admin.css">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+</head>
+<body>
+	<div class="sesion-sec-1">
+        <div class="logo-sesion">
+            <a href="index.html"><img src="images/logo.png" alt=""></a>
+        </div>
+        <div class="login-form">
+            <form action="admin-home.html" method="POST">
+                <h3>Admin module</h3>
+                <span class="error display-none">* Incorrect username or password</span>
+                <div>
+                    <label>Email Address:</label>
+                    <input type="email">
+                    <label>Password:</label>
+                    <input type="password">
+                    <input type="submit" value="Sign in">
+                </div>
+            </form>
+        </div>
+        <div class="login-form display-none">
+            <form action="admin-home.html" method="POST">
+                <h3>Password recovery</h3>
+                <span class="error display-none">* Can't find that email in our database</span>
+                <div>
+                    <label>Enter your email address and we will send you a link to reset your password.</label>
+                    <input type="email">
+                    <input type="submit" value="Sent password reset email">
+                </div>
+            </form>
+        </div> 
+        <div class="footer-sesion">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div> 
+    </div>
+</body>
+<script src="js/scripts.js"></script>
+</html>

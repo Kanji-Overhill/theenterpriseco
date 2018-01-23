@@ -1,0 +1,172 @@
+{% extends "base/base.html" %}
+{% block title %} FAQ | The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% block morestyles %}
+    <link rel="stylesheet" href="{% static "css/styles-faq.css" %}">
+{% endblock morestyles %}
+{% block content %}
+<header>
+        <a class="responsive-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="/">Home</a></li>
+                
+                <li><a href="/rentals">Rentals</a></li>
+                <li id="resident">
+                    <a id="resident-link" href="/tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                        <li><a href="/forms">Forms</a></li>
+                        <li><a class="active" href="/faq">FAQ</a></li>
+                        <li><a href="/maintenance">Maintenance</a></li>
+                        <li><a href="/move">Move Out</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="faq-sec-1" style="background-image: url({% static "images/faq.jpg" %})">
+            <h1><b>Frequently</b><br>Asked Questions</h1>
+        </section>
+        <section class="faq-sec-2">
+            <div class="title-rent-head">
+                <p><b>Have a question?</b></p>
+            </div>
+            <p class="description">Some of our most Frequently Asked Questions are answered below. To speak with someone in the office regarding any questions you may have, please do not hesitate to <a href="contact">Contact Us.</a></p>
+        </section>
+        <section class="faq-sec-3">
+            <div class="controls">
+                <button class="filter" data-filter=".category-0">General</button>
+                <button class="filter" data-filter=".category-1">Maintenance</button>
+                <button class="filter" data-filter=".category-2">Moving Out</button>
+            </div>
+            <div id="Container-3" class="container">
+                <div class="mix category-0">
+                    <div class="contenedor-pregunta">
+                        <p>When is rent due?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">Your rent is due on the first day of the month. Your rent is late as of midnight on the first, but we give you a grace period until the 5th. If your rent is not received in our office by 5:00pm on the 5th day of the month then your account will automatically be charged a late fee. If the 5th falls on a weekend or holiday, it will be late as of the first business day following it.</p>
+                    </div>
+                </div>
+                <div class="mix category-0">
+                    <div class="contenedor-pregunta">
+                        <p>How do I pay my rent?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">1. You can mail your rent in to our office and put your address/unit # on the memo line of your check.</p>
+            <p class="respuesta">2. You can pay in person at our office. We have a mail slot in the front door if we are closed.</p>
+                    </div>
+                </div>
+                <div class="mix category-0">
+                    <div class="contenedor-pregunta">
+                        <p>What happens if I don’t pay my rent?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">You should notify us immediately by calling our office at (510) 444 0876 or via email at theenterprisecom@gmail.com</p>
+                    </div>
+                </div>
+                <div class="mix category-0">
+                    <div class="contenedor-pregunta">
+                        <p>In case of multiple applications?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">We do not operate on a first come/first serve basis; we run credit on all fully submitted applications and the final decision is mainly based on Credit Score and a stable source of income.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>How do I report a maintenance issue?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">You can call us directly at (510) 444 0876 and please visit the maintenance tab within our services page and fill-out the contact form. *We request that you fill out the form regardless.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>Who is responsible for payment of Repair Cost?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">In most cases the Landlord is responsible for any cost of repairs if the Tenant complies with the procedures for requesting repairs. In other cases in which the Tenant, an occupant or any guest or invitee of the Tenant causes conditions in which a repair of any kind will need to be completed, the Tenant is responsible for all payment of Repair Cost.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>Smoke Detectors won’t work when tested?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">Press the test button or test with approved smoke detector smoke spray, replace battery.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>Smoke detector beeps?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">Replace battery.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>No power to plugs or switches?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">Check and reset breaker panel. Check and reset all GFI (Ground Fault Indicator) outlets (located in kitchen, bathrooms, utility rooms, and garages). Check if plug works off a wall switch.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>Garbage Disposal doesn’t work?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">When on, do you hear a buzz? If you do not hear a buzz, hit the reset button on the bottom of the disposal to test. If you hear a buzz, turn off disposal and unplug from wall.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>Dishwasher won’t drain?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">Clean food out of bottom of dishwasher. Clean drain line between dishwasher and garbage disposal.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>Dishwasher grinds or no water coming in?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">Turn off, if no water is on the bottom, pour two large glasses of water into the bottom and re-start. If problem continues, call your property manager and discontinue use.</p>
+                    </div>
+                </div>
+                <div class="mix category-1">
+                    <div class="contenedor-pregunta">
+                        <p>Refrigerator is too warm or too cold?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">Check if thermostat in refrigerator is set correctly. Clean lint from filters –DO NOT block the cold air vent at the back of the refrigerator interior.</p>
+                    </div>
+                </div>
+                <div class="mix category-2">
+                    <div class="contenedor-pregunta">
+                        <p>How am I expected to leave the apartment?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">Upon move out, you are expected to return the apartment essentially the same way you received it. We expect to see that no damage has been done to property or its contents. The carpeting must be professionally cleaned or we will bill you for our vendor.</p>
+                    </div>
+                </div>
+                <div class="mix category-2">
+                    <div class="contenedor-pregunta">
+                        <p>Security Deposit</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">The Enterprise Company will refund you your deposit less any charges within 21 days of your move-out day or the last day you owe rent – whichever is later.</p>
+                    </div>
+                </div>
+                <div class="mix category-2">
+                    <div class="contenedor-pregunta">
+                        <p>My lease is about to expire, what happens next?</p>
+                        <input type="checkbox" name="faq">
+                        <p class="respuesta">The lease will become a month-to-month agreement at the end of the lease.</p>
+                    </div>
+                </div>
+            <div class="gap"></div>
+            <div class="gap"></div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
+{% block morescripts %}{% endblock morescripts %}
+	
+
+

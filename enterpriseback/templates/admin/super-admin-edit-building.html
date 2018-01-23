@@ -1,0 +1,299 @@
+{% extends "admin/adminBase.html" %}
+    {% load humanize %}
+
+    {% block style %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/super-main-admin.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/styles-super-admin-edit-building.css">
+	<link rel="shortcut icon" type="image/x-icon" href="{{STATIC_URL}}images/favicon.png" />
+    {% endblock style %}
+
+    {%block main%}
+	<main>
+        <form id="Bform" method='post' name="Bform" action="" enctype="multipart/form-data">{% csrf_token %}{% if id%}<input type='hidden' name='id' value='{{id}}' />{%endif%}
+        <section class="build-sec-1">
+            <b>Address:</b>
+            <input type="text" placeholder="Full address of the building" id="id_adress" maxlength="300" name="adress" value="{{ Bform.adress.value|default_if_none:"" }}">
+            <b class="b2">Upload Building Picture</b>
+            {% if Bform.picture.value %}
+            {% comment %}
+            Currently:  <input id="picture-clear_id" name="picture-clear" type="checkbox" />Clear
+            {% endcomment %}
+           
+            <br>
+            <img src="{{ MEDIA_URL }}{{Bform.picture.value}}" width="40%">
+            <br>
+            Change: 
+            {% endif %}
+            <input type="file" id="id_picture" name="picture" >
+            <label for="">Location Description</label>
+            <textarea id="id_location_description" name="location_description" placeholder="E.g Spacious studio, etc" >{{ Bform.location_description.value|default_if_none:"" }}</textarea>
+            <p class="nearby">Neighborhood Amenities</p>
+            <div class="contain-upload">
+            {% if atractions %}
+            {% for atrac in atractions  %}
+                <div class="upload-nearby">
+                    <div class="contain-nearby" style="background-image: url({{atrac.picture.url}});">
+                        <div class="file">
+                            <a class="delete remove-atraction{{atrac.id}}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+            </div>
+
+            <div class="contain-upload contain-upload-active" id="upload-1">
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>   
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>          
+            </div>
+            <div class="contain-upload contain-upload-deactivate" id="upload-2">
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>   
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                    
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" class="imgInp" name="pictureAmeni">
+                            <div class="imgpre"></div>
+                        </div>
+                        
+                    </div>
+                    <input type="text" placeholder="Name of Amenity" name="pictureAmeniName" >
+                </div>          
+            </div>
+            
+            <a class="add-more more-1">Add more pictures</a>
+        </section>
+		<section class="rentals-sec-2">
+            {%if apartments%}
+                <h1>Current available apartments in this building, you can edit or delete each department</h1>
+                <div id="Container2" class="container">
+                {%for apart in apartments%}
+                <div class="mix category-2">
+                    <a href="/individual?id={{apartments.id}}">
+                        <div class="container-imagen" style="background-image: url(
+                        {%if apart.depart.building.picture%}
+                        {{apart.depart.building.picture.url}}
+                        {%else%}
+                        {{STATIC_URL}}images/slid-1-home.jpg
+                        {% endif %}
+                        );"></div>
+                        <div class="text-contenedor">
+                        <p>{{apart.depart}}</p>
+                        <b>${{apart.depart.rent|floatformat:2|intcomma}} / month</b>
+                        </div>
+                    </a>
+                    <div class="mix-color">
+                        <div class="links">
+                            <a href="/admin/department?id={{apart.depart.id}}">Edit</a>
+                            <a class="delete remove-apartment{{apart.depart.id}}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+                {%endfor%}
+            {%else%}There are currently no apartments assigned to this building.
+            {%endif%}
+
+                <div class="gap"></div>
+                <div class="gap"></div>
+                </div>
+		</section>
+        <input type="submit" class="save-build" name="saveBuild" value="Save building data">
+        </form>
+
+        {%if apartments%}
+        {%for apart in apartments%}
+
+        <div class="element_to_pop_up apartment-remove-{{apart.depart.id}}">
+            <p>Are you sure want to remove this item and all information?</p>
+            <div class="links">
+                
+                <form method="post" action="">
+                    <a href="/admin/department?id={{apart.depart.id}}">Edit</a>
+                    <input type="submit" name="removeApart" value="Remove">
+                    {% if id%}<input type='hidden' name='id' value='{{id}}' />{%endif%}
+                    <input type='hidden' name='idA' value='{{apart.depart.id}}' />
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+
+        {%endfor%}
+        {%endif%}
+
+        {%if atractions%}
+        {%for atrac in atractions%}
+
+        <div class="element_to_pop_up atraction-remove-{{atrac.id}}">
+            <p>Are you sure want to remove this item and all information?</p>
+            <div class="links">
+                <form method="post" action="">{% csrf_token %}
+                {% if id%}<input type='hidden' name='id' value='{{id}}' />{%endif%}
+                <input type='hidden' name='idA' value='{{atrac.id}}' />
+                <input type="submit"  class="removePhoto" name="removeAtraction" value="Remove"></form>
+            </div>
+        </div>
+
+        {%endfor%}
+        {%endif%}
+	</main>
+    {%endblock main%}
+{% block morescripts %}
+<script type="text/javascript">
+    var counter = 1;
+    var limit = 6;
+    function addInput(divName){
+         if (counter == limit)  {
+              alert("You have reached the limit of adding " + counter + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+
+              var codediv= '<div class="upload-nearby"><div class="contain-nearby"><div class="file"><p>Upload</p><input type="file" class="imgInp" name="pictureAmeni" value="None"><div class="imgpre"></div></div></div><input type="text" placeholder="Name of Amenity" name="pictureAmeniName"></div>';
+              newdiv.className = "contain-upload";
+              newdiv.innerHTML =codediv+codediv+codediv;
+              document.getElementById(divName).appendChild(newdiv);
+              counter++;
+         }
+    }
+</script>
+
+<script type="text/javascript">
+    function readURL() {
+        var $input = $(this);
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $input.next('.imgpre').css('background-image', 'url(' + e.target.result + ')');
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
+    }
+
+    $(".imgInp").change(readURL);
+
+    {%if apartments%}
+    {%for apart in apartments%}
+        $('.remove-apartment{{apart.depart.id}}').bind('click', function(e) {
+            e.preventDefault();
+            $('.apartment-remove-{{apart.depart.id}}').bPopup();
+        });
+    {%endfor%}
+    {%endif%}
+
+    {% if atractions %}
+    {% for atrac in atractions  %}
+        $('.remove-atraction{{atrac.id}}').bind('click', function(e) {
+            e.preventDefault();
+            $('.atraction-remove-{{atrac.id}}').bPopup();
+        });
+    {% endfor %}
+    {% endif %}
+</script>
+{% endblock morescripts %}

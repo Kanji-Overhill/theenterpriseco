@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Administrador | The Enterprise Company</title>
+	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" href="css/super-main-admin.css">
+	<link rel="stylesheet" href="css/styles-super-admin-edit-building.css">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+</head> 
+<body>
+	<header>
+	    <a href="super-admin-home.html" class="logo"><img src="images/logo.png" alt=""></a>
+        <a href="admin-sesion.html" class="sing-out">Sign Out</a>
+	</header>
+	<main>
+        <form action="" method="POST">
+        <section class="build-sec-1">
+            <b>Address:</b>
+            <input type="text" placeholder="Full address of the building">
+            <b class="b2">Upload Building Picture</b>
+            <input type="file">
+            <label for="">Location Description</label>
+            <textarea name="" id="" placeholder="E.g Spacious studio, etc"></textarea>
+            <p class="nearby">Neighborhood Amenities</p>
+            <div class="contain-upload">
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" name="2">
+                        </div>
+                        <a class="remove-manager delete">Remove</a>
+                    </div>
+                    <input type="text" placeholder="Name of Amenity">
+                </div>
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" name="2">
+                        </div>
+                        <a class="remove-manager delete">Remove</a>
+                    </div>
+                    <input type="text" placeholder="Name of attraction">
+                </div>
+                <div class="upload-nearby">
+                    <div class="contain-nearby">
+                        <div class="file">
+                            <p>Upload</p>
+                            <input type="file" name="2">
+                        </div>
+                        <a class="remove-manager delete">Remove</a>
+                    </div>
+                    <input type="text" placeholder="Name of attraction">
+                </div>
+            </div>
+            <a href="" class="add-more">Add more pictures</a>
+        </section>
+		<section class="rentals-sec-2">
+                <h1>Current available apartments in this building, you can edit or delete each department</h1>
+                <div id="Container2" class="container">
+                <div class="mix category-2">
+                	<a href="individual.html">
+                		<div class="container-imagen" style="background-image: url(images/rentals-1.jpg);"></div>
+                	    <div class="text-contenedor">
+                		<p>1810 E 25th Street, Oakland</p>
+                		<b>$1,500 / month</b>
+                	    </div>
+                	</a>
+                    <div class="mix-color">
+                        <div class="links">
+                            <a href="super-admin-edit.html">Edit</a>
+                            <a class="delete my-button">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mix category-2">
+                	<a href="super-admin-edit.html">
+                		<div class="container-imagen" style="background-image: url(images/rentals-1.jpg);"></div>
+                	    <div class="text-contenedor">
+                		<p>1810 E 25th Street, Oakland</p>
+                		<b>$1,500 / month</b>
+                	    </div>
+                	</a>
+                    <div class="mix-color">
+                        <div class="links">
+                            <a href="super-admin-edit.html">Edit</a>
+                            <a class="delete my-button">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap"></div>
+                <div class="gap"></div>
+                </div>
+		</section>
+        <input type="subit" class="save-build" value="Save building data">
+        </form>
+        <div id="element_to_pop_up">
+            <p>Are you sure want to remove this item and all information?</p>
+            <div class="links">
+                <a href="super-admin-edit.html">Edit</a>
+                <a class="delete my-button">Delete</a>
+            </div>
+            <b>I want to <a href="">edit</a></b>
+        </div>
+        <div class="element_to_pop_up manager-remove">
+            <p>Are you sure want to remove this item and all information?</p>
+            <div class="links">
+                <a class="close-pop">Cancel</a>
+                <a class="delete my-button">Remove</a>
+            </div>
+        </div>
+        <div class="element_to_pop_up manager-warning">
+            <p>Warning! This building is currently assigned to another manager</p>
+            <b>Do you want to assign the building anyway?</b>
+            <div class="links">
+                <a class="close-pop">Cancel</a>
+                <a class="delete assign">Assign</a>
+            </div>
+        </div>
+        <div class="element_to_pop_up manager-edit">
+            <p>Manager Information</p>
+                <form action="" method="POST">
+                    <label for="">User Name:</label>
+                    <input type="text" placeholder="">
+                    <label for="">Password:</label>
+                    <input type="password">
+                    <label for="">Assigned building:</label>
+                    <select>
+                        <option value="">Direction</option>
+                    </select>
+                
+            <div class="links">
+                <a class="close-pop">Cancel</a>
+                <input type="submit" class="save warning" value="Save">
+            </div>
+            </form>
+        </div>
+	</main>
+	<div class="footer-sesion">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+    </div> 
+</body>
+<script src="js/scripts.js"></script>
+</html>

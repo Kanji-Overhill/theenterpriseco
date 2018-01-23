@@ -1,0 +1,125 @@
+{% extends "admin/super-admin-home-department.html" %}
+
+{% block mainManager %}
+
+                <div class="mix category-1">
+                    {%if managers%}
+                    {%for manag in managers%}
+                    <div class="manager">
+                        <p>
+                            <b>{%if manag.user.first_name%} {{manag.user.first_name}}{%else%} {{manag.user.username}} {%endif%}</b><br>
+                            <span>Building:</span>
+                            {%if manag.building%} {{manag.building}} {%else%}not assigned{%endif%}
+                        </p>
+                        <a class="edit-manager" id="edit-manager{{manag.id}}">Edit</a>
+                        <a class="remove-manager" id="remove-manager{{manag.id}}">Remove</a>
+                    </div>
+
+
+                    <div class="element_to_pop_up manager-remove" id="manager-remove-{{manag.id}}">
+                        <p>Are you sure want to remove this item and all information? {{manag.user.username}} </p>
+                        <div class="links">
+                            
+                            <form method="post" action="">{% csrf_token %}
+                            <input type='hidden' name='id' value='{{manag.id}}' />
+                            <a class="close-pop">Cancel</a>
+                            <input  type="submit" class="delete" name="removeManager" value="Remove"></form>
+                        </div>
+                    </div>
+
+
+                    <div class="element_to_pop_up manager-edit" id="manager-edit-{{manag.id}}">
+                        <p>Manager {{manag.user.username}} Information</p>
+                            <form action="" method="POST">{% csrf_token %}
+                                <input type='hidden' name='id' value='{{manag.id}}' />
+                                <label for="">Name:</label>
+                                <input type="text" placeholder="" value="{{manag.user.first_name|default_if_none:"" }}" name="name">
+                                <label for="">User Name:</label>
+                                <input type="text" placeholder=""value="{{manag.user|default_if_none:"" }}" name="username">
+                                <label for="">Email:</label>
+                                <input type="email" placeholder="" name="email" required value="{{ manag.user.email|default_if_none:"" }}">
+                                <label for="">Password:</label>
+                                <input type="password" name="password">
+                                <label for="">Assigned building:</label>
+                                <select name="building">
+                                    <option value >- - - - - - - - - -</option>
+                                    {% if buildings %}
+                                    {% for build in buildings  %}
+                                        <option value="{{build.id}}" {%if manag.building == build%} selected {%endif%}>{{build}}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            
+                                <div class="links">
+                                    <a class="close-pop">Cancel</a>
+                                    <input  type="submit"  class="save warning" name="editManager" value="Save">
+                                </div>
+                            </form>
+                    </div>
+
+
+                    {%endfor%}
+                    {%else%}
+                    {%endif%}
+                </div>
+
+
+
+                <div class="element_to_pop_up manager-edit" id="manager-edit-new">
+                    <p>Manager Information</p>
+                    <form  name="Mform" method="post" action="">{% csrf_token %}
+                        <label for="">Name:</label>
+                        <input type="text" placeholder="" name="name" required>
+                        <label for="">User Name:</label>
+                        <input type="text" placeholder="" name="username" required>
+                        <label for="">Email:</label>
+                        <input type="email" placeholder="" name="email" required>
+                        <label for="">Password:</label>
+                        <input type="password" name="password" required>
+                        <label for="">Assigned building:</label>
+                        <select name="building">
+                            <option value>- - - - - - </option>
+                        {% if buildings %}
+                        {% for build in buildings  %}
+                            <option value="{{build.id}}">{{build}}</option>
+                        {% endfor %}
+                        {% endif %}
+                        </select>
+                
+                        <div class="links">
+                            <a class="close-pop">Cancel</a>
+                            <input type="submit" class="save warning" value="Save" name="newManager"> 
+                        </div>
+                    </form>
+                </div>
+
+{% endblock mainManager %}
+
+{% block scriptsManager %}
+    {%if managers%}
+    {%for manag in managers%}
+        $('#edit-manager{{manag.id}}').bind('click', function(e) {
+            e.preventDefault();
+            $('#manager-edit-{{manag.id}}').bPopup();
+        });
+
+        $('#remove-manager{{manag.id}}').bind('click', function(e) {
+            e.preventDefault();
+            $('#manager-remove-{{manag.id}}').bPopup();
+        });
+
+
+    {%endfor%}
+    {%endif%}
+
+        $('.close-pop').bind('click', function(e) {
+            e.preventDefault();
+            {%if managers%}
+            {%for manag in managers%}
+            $('#manager-edit-{{manag.id}}').bPopup().close();
+            {%endfor%}
+            {%endif%}
+        });
+
+
+{% endblock scriptsManager %}

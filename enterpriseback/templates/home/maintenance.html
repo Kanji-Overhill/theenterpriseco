@@ -1,0 +1,119 @@
+{% extends "base/base.html" %}
+{% block title %} Maintenance | The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% block morestyles %}
+    <link rel="stylesheet" href="{% static "css/styles-maintenance.css" %}">
+{% endblock morestyles %}
+{% block content %}
+    <header>
+        <a class="responsive-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="/">Home</a></li>
+                
+                <li><a href="/rentals">Rentals</a></li>
+                <li id="resident">
+                    <a id="resident-link" href="/tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                        <li><a href="/forms">Forms</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a class="active" href="/maintenance">Maintenance</a></li>
+                        <li><a href="/move">Move Out</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="maintenance-sec-1" style="background-image: url({% static "images/maintenance.jpg" %}); background-position-y: 70%;">
+            <h1><b>Maintenance</b><br>Request</h1>
+        </section>
+        <section class="maintenance-sec-2">
+            <div class="title-rent-head">
+                <p><b>Maintenance request</b></p>
+            </div>
+            <p class="description">Having trouble with a maintenance issue? Please fill out the form below and be as descriptive as possible - we will get back to you with a response as soon as we can.</p>
+            <div class="title-rent-head">
+                <p><b>Contact Form</b></p>
+            </div>
+        </section>
+        <section class="maintenance-sec-3">
+            <form action="" method="POST" enctype="multipart/form-data">
+            
+                <div class="formulario-mid">{% csrf_token %}
+                    <input type="text" class="full" name="name" placeholder="Your name" {% if form.name.value %} value="{{form.name.value}}"{% endif %}>
+                    <input type="text" class="full" name="adress" placeholder="Address" {% if form.adress.value %} value="{{form.adress.value}}"{% endif %}>
+                    <input type="text" class="full" name="unit_number" placeholder="Unit number" {% if form.unit_number.value %} value="{{form.unit_number.value}}"{% endif %}>
+                    <input type="text" class="full" name="phone_number" placeholder="Phone number" {% if form.phone_number.value %} value="{{form.phone_number.value}}"{% endif %}>
+                    <input type="email" class="full" name="email" placeholder="Email" {% if form.email.value %} value="{{form.email.value}}"{% endif %}>
+                    <p class="full-p">Do you have photo to submit with you request? Please attach here</p>
+                    <input type="file" name="file">
+                </div>
+                <div class="formulario-mid">
+                    <div>
+                        <p class="p-radio">Preferred method of contact</p> <input type="radio" name="contact" value="1" {% if form.contact.value == "1" %}checked="checked"{% endif %}><span>Phone</span><input name="contact" type="radio" value="2" {% if form.contact.value == "2" %}checked="checked"{% endif %}><span>Email</span>
+                    </div>
+                    <div>
+                        <p class="p-radio">Do you have any pets</p> <input type="radio" name="pets" value="1" {% if form.pets.value == "1" %}checked="checked"{% endif %}><span>Yes</span><input type="radio" name="pets" value="2" {% if form.pets.value == "2" %}checked="checked"{% endif %}><span>No</span>
+                    </div>
+                    <div>
+                        <p class="p-parrafo">If so, what kind?</p><input type="text" class="input-inline" name="kind_pet" {% if form.kind_pet.value %} value="{{form.kind_pet.value}}"{% endif %}>
+                    </div>
+                    <div>
+                        <p class="p-parrafo">Please choose an option:</p>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="option_maintenance" value="1" {% if form.option_maintenance.value == "1" %}checked="checked"{% endif %}><p>I do not give The Enterprise Company, and/or its authorized third-party, independent contractor, permission to enter my unit to perform the requested maintenance unless I am present.</p>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="option_maintenance" value="2" {% if form.option_maintenance.value == "2" %}checked="checked"{% endif %}><p> I give The Enterprise Company, and/or its authorized third party independent contractor, permission to enter my dwelling while I am not there to complete the requested repairs below.</p>
+                    </div>
+                </div>  
+                <div class="formulario-full">
+                    <div>
+                        <textarea name="description" placeholder="Enter your text here">{% if form.description.value %}{{form.description.value}}{% endif %}</textarea>
+                    </div>
+                    <div>
+                        {{form.captcha}}
+                        <input class="top-captcha" type="submit" value="Submit">
+                        }
+                    </div>
+                </div>
+            </form>
+            <p class="p-fot"><b>Please note:</b><br>
+            Damage caused by your negligence or misuse -- including, but not limited to plumbing stoppages or overflow -- is your responsibility.  Repairs will be made, but you will be charged for the cost of labor and materials.</p> 
+        </section>
+    </main>
+{% endblock content %}
+{% block morescripts %}
+<script language='javascript' type='text/javascript'>
+    $(document).ready(function () {
+        var firstInput = $('form').find('input[type=text],input[type=password],input[type=radio],input[type=checkbox],textarea,select').filter(':visible:first');
+        if (firstInput != null) {
+            firstInput.focus();
+        }
+    });
+    {% for field in form %}
+    
+        {%if field.errors %}
+            {% if field.label %}
+                alert('{{field.label}}: '+'{{ field.errors }}');
+            {% else %}
+                alert('{{field.name}}: '+'{{ field.errors }}');
+            {% endif %}
+            console.log('{{ field.errors }}');
+        {%endif%}
+        {% endfor %}
+</script>
+{% endblock morescripts %}
+	
+
+
+
+

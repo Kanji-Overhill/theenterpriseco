@@ -1,0 +1,135 @@
+{% extends "admin/adminBase.html" %}
+{% load staticfiles %}
+{% load humanize %}
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/styles-super-admin-edit.css" %}">
+{% endblock style %}
+{% block main %}
+<main>
+    <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <section class="edit-sec-1">
+            <div class="edit-contain-main">
+                <div class="edit-contain-info">
+                    {% if manager %}
+                        <label>Address:</label>
+                        <p class="select-manager">{{manager.building}}</p>
+                        <input type='hidden' name='building' value='{{manager.building.id}}' />
+                        <input type='hidden' name='id' value='{{idD}}' />
+                    {% else %}
+                        {% if idD %}
+                        <label>Address:</label>
+                        <p class="select-manager">{{BuildName}}</p>
+                        <input type='hidden' name='building' value='{{Dform.building.value|default_if_none:""}}' />
+                        <input type='hidden' name='id' value='{{idD}}' />
+                         {%else%}
+                        <label>Address:</label>
+                         {{Dform.building}}
+                        {% endif %}
+                    {% endif %}
+                    <label>Manager:</label>
+                    {% if manager %}
+                    <p class="select-manager">{% if manager.user.first_name %}{{manager.user.first_name}}{%else%}{{manager.user.username}}{% endif %}</p>
+                    {%else%}
+                    <p class="select-manager">{% if managerB %}{{managerB}}{%else%}William{% endif %} </p>
+                    {%endif%}
+                    <p class="titulo-edit-2">Unit Description</p>
+                    <div class="unit-information">
+                        <div><p>Apartment Number:</p><input type="text" placeholder="Apartment number" name="number_of_apartment" required value="{{ Dform.number_of_apartment.value|default_if_none:"" }}"></div>
+                        <div><p>Type:</p><input type="text" placeholder="E.g. Townhome" name="type_department" required value="{{ Dform.type_department.value|default_if_none:"" }}"></div>
+                        <div><p>Bedrooms:</p><input type="number" placeholder="-None-" name="bedrooms" value="{{ Dform.bedrooms.value|default_if_none:"" }}"></div>
+                        <div><p>Bathrooms:</p><input type="number" placeholder="-None-" name="bathrooms" value="{{ Dform.bathrooms.value|default_if_none:"" }}"></div>
+                        <div><p>Rent:</p><input type="number" placeholder="Amount of money per month" name="rent" step=0.01 value="{{ Dform.rent.value|floatformat:2 }}"></div>
+                        <div><p>Deposit:</p><input type="number" placeholder="Amount of money $$$" step=0.01 name="deposit" value="{{ Dform.deposit.value|floatformat:2 }}"></div>
+                        <div><p>Parking:</p><input type="text" placeholder="Garage" name="parking" value="{{ Dform.parking.value|default_if_none:"" }}"></div>
+                        <div><p>Pets:</p><input type="text" placeholder="E.g. Dogs and Cats Not allowed" name="pets" value="{{ Dform.pets.value|default_if_none:"" }}"></div>
+                        <div><p>Utilities:</p><input type="text" placeholder="E.g. Garbage Included" name="utilities" value="{{ Dform.utilities.value|default_if_none:"" }}"></div>
+                        <div><p>Kitchen:</p><input type="text" placeholder="E.g. Granite counters, stainless steel full size appliances" name="kitchen" value="{{ Dform.kitchen.value|default_if_none:"" }}"></div>
+                        <div><p>Laundry:</p><input type="text" placeholder="E.g. In Unit" name="laundry" value="{{ Dform.laundry.value|default_if_none:"" }}"></div>
+                        <div><p>Lease Term:</p><input type="text" placeholder="E.g. Year Lease" name="lease_term" value="{{ Dform.lease_term.value|default_if_none:"" }}"></div>
+                    </div>
+                    <div class="unit-description">
+                        <p>Unit Description</p>
+                        <textarea placeholder="E.g. Spacious studio, etc." required name="unit_description">{{ Dform.unit_description.value|default_if_none:"" }}</textarea>
+                        {%comment%}
+                        <p>Location Description</p>
+                        <textarea placeholder="E.g. Spacious studio, etc."></textarea>{%endcomment%} 
+                    </div>
+                </div>
+                <div class="edit-contain-images">
+                    <input  multiple="multiple" type="file" id="file" name="galeria">
+                    <label for="file"><img src="{% static "images/add-image.png" %}" alt=""></label>
+                    <div class="slid-edit-1" id="result">
+                        {% comment %}
+                            SI hay imagenes en el depa en este FOR se renderizan
+                        {% endcomment %}
+                        {% if images in depa.images %} {% static "" %}
+                            {% for images in depa  %}
+                                 <div style="background-image: url({% static "{{image.url}}" %});"></div>
+                            {% endfor %}
+                        {% endif %}                                       
+                    </div>
+                    
+
+                </div>
+                <div class="build-sec-1">
+                    
+                        <div class="contain-upload">
+                        {% if galeryD %}
+                        {% for picture in galeryD  %}
+                            <div class="upload-nearby">
+                                <div class="contain-nearby" style="background-image: url({{picture.picture.url}});">
+                                    <div class="file">
+                                        <a class="delete remove-picture{{picture.id}}">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                        </div>
+
+                </div>
+                
+                <input type="submit" value="Save changes" name="saveD">
+            </div>
+        </section>
+
+    </form>
+    <div id="element_to_pop_up">
+            <p>Are you sure want to remove this item and all information?</p>
+            <div class="links">
+                <a href="super-admin-edit.html">Edit</a>
+                <a class="delete my-button">Delete</a>
+            </div>
+            <b>I want to <a href="">edit</a></b>
+        </div>
+
+    {%if galeryD%}
+    {%for picture in galeryD%}
+
+        <div class="element_to_pop_up picture-remove-{{picture.id}}">
+            <p>Are you sure want to remove this item and all information?</p>
+            <div class="links">
+                <form method="post" action="">{% csrf_token %}
+                {% if idD%}<input type='hidden' name='id' value='{{idD}}' />{%endif%}
+                <input type='hidden' name='idP' value='{{picture.id}}' />
+                <input type="submit"  name="removePicture" value="Remove"></form>
+            </div>
+        </div>
+
+    {%endfor%}
+    {%endif%}
+
+</main>
+{% endblock main %}
+{% block morescripts %}
+<script>
+    {% if galeryD %}
+    {% for picture in galeryD  %}
+        $('.remove-picture{{picture.id}}').bind('click', function(e) {
+            e.preventDefault();
+            $('.picture-remove-{{picture.id}}').bPopup();
+        });
+    {% endfor %}
+    {% endif %}
+</script>
+{% endblock morescripts %}

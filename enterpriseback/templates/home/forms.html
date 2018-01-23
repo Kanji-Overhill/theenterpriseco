@@ -1,0 +1,52 @@
+{% extends "base/base.html" %}
+{% block title %} Forms | The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% block morestyles %}
+	<link rel="stylesheet" href="{% static "css/styles-forms.css" %}">
+{% endblock morestyles %}
+{% block content %}
+		<header>
+	    <a class="responsive-menu">
+	    	<span></span>
+	    	<span></span>
+	    	<span></span>
+	    </a>
+	    <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+		<nav>
+			<ul class="menu-principal">
+				<li><a href="/">Home</a></li>
+				
+				<li><a href="/rentals">Rentals</a></li>
+				<li id="resident">
+				    <a id="resident-link" href="/tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                    	<li><a class="active" href="/forms">Forms</a></li>
+                    	<li><a href="/faq">FAQ</a></li>
+                    	<li><a href="/maintenance">Maintenance</a></li>
+                    	<li><a href="/move">Move Out</a></li>
+                    </ul>
+				</li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="resident-sec-1" style="background-image: url({% static "images/forms.jpg" %})">
+			<h1><b>Forms</b></h1>
+		</section>
+		<section class="resident-sec-2">
+			<div class="title-rent-head">
+				<p>Our Services</p>
+			</div>
+			<p class="description">The Enterprise Company prides itself with providing extraordinary service to its clients. Whether you have a question, need a maintenance request or need to download a certain form, please click on one of the options below to begin.</p>
+			<ul>
+				<li><a href="/maintenance">Maintenance Request</a></li>
+				<li><a href="/move">Move Out</a></li>
+				<li><a href="{% static "Rental_Application.pdf" %}">Rental Application</a></li>
+			</ul>
+		</section>
+	</main>
+
+{% endblock content %}
+{% block morescripts %}{% endblock morescripts %}
+	

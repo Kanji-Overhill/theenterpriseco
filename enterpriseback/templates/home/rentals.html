@@ -1,0 +1,76 @@
+{% extends "base/base.html" %}
+{% block title %}Rentals | The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% load humanize %}
+{% block morestyles %}
+    <link rel="stylesheet" href="{% static "css/styles-rentals.css" %}">
+{% endblock morestyles %}
+{% block content %}
+    <header>
+        <a class="responsive-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="/">Home</a></li>
+                
+                <li><a class="active" href="/rentals">Rentals</a></li>
+                <li id="resident">
+                    <a id="resident-link" href="/tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                        <li><a href="/forms">Forms</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/maintenance">Maintenance</a></li>
+                        <li><a href="/move">Move Out</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="rentals-sec-1" style="background-image: url({% static "images/rentals.jpg" %})">
+            <h1>The perfect <b>place</b></h1>
+            <a href="{% static "Rental_Application.pdf" %}">Rental application <img src="{% static "images/icon.png" %}" alt=""></a>
+        </section>
+        <section class="rentals-sec-2">
+            <div class="controls">
+                <button class="filter" data-filter="all">All</button>
+                <button class="filter" data-filter=".category-0">0 Bedroom</button>
+                <button class="filter" data-filter=".category-1">1 Bedroom</button>
+                <button class="filter" data-filter=".category-2">2 Bedroom</button>
+                <button class="filter" data-filter=".category-3">3+ Bedroom</button>
+            </div>
+            <div id="Container" class="container">
+                {% if departments %}
+                {% for depa in departments %}
+                    <div class="mix {% if depa.depart.bedrooms >= 3  %}category-3{% elif depa.depart.bedrooms == 2 %}category-2{% elif depa.depart.bedrooms == 1 %}category-1{% elif depa.depart.bedrooms == 0 %}category-0{% endif %}">
+                        <a href="/individual?id={{depa.depart.id}}">
+                            <div class="container-imagen" style="background-image: url(
+                            {%if depa.depart.building.picture%}
+                            {{depa.depart.building.picture.url}}
+                            {%else%}
+                            {{STATIC_URL}}images/slid-1-home.jpg 
+                            {%endif%}
+                            );"></div>
+                            <div class="text-contenedor">
+                            <p>{{depa.depart}}</p>
+                            <b>${{depa.depart.rent|floatformat:2|intcomma}} / month</b>
+                            </div>
+                        </a>
+                    </div>   
+                {% endfor %}
+                {% endif %}
+            <div class="gap"></div>
+            <div class="gap"></div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
+{% block morescripts %}{% endblock morescripts %}
+	
+
+

@@ -1,0 +1,95 @@
+{% extends "base/base.html" %}
+{% block title %} Move Out | The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% block morestyles %}
+    <link rel="stylesheet" href="{% static "css/styles-move.css" %}">
+{% endblock morestyles %}
+{% block content %}
+    <header>
+        <a class="responsive-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="/">Home</a></li>
+                
+                <li><a href="/rentals">Rentals</a></li>
+                <li id="resident">
+                    <a id="resident-link" href="/tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                        <li><a href="/forms">Forms</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/maintenance">Maintenance</a></li>
+                        <li><a class="active" href="/move">Move Out</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="maintenance-sec-1" style="background-image: url({% static "images/move.jpg" %})">
+            <h1>Move<br><b>Out</b></h1>
+        </section>
+        <section class="maintenance-sec-2">
+            <div class="title-rent-head">
+                <p><b>Move Out</b></p>
+            </div>
+            <p class="description">When ready to move out, first please visit our Frequently Asked Questions page to learn more about the process of moving out. Then, if you'd like, you can submit your 30-day notice to vacate on line by filling out the form below.</p>
+        </section>
+        <section class="maintenance-sec-3">
+            <form action="/move" method="POST">
+                <div class="formulario-mid">
+                    {% csrf_token %}
+                    <input type="text" class="full" name="name" placeholder="Your name" {% if form.name.value %} value="{{form.name.value}}"{% endif %}>
+                    <input type="text" class="full" name="adress" placeholder="Address" {% if form.adress.value %} value="{{form.adress.value}}"{% endif %}>
+                    <input type="text" class="full" name="unit_number" placeholder="Unit number" {% if form.unit_number.value %} value="{{form.unit_number.value}}"{% endif %}>
+                    <input type="text" class="full" name="phone_number" placeholder="Phone number" {% if form.phone_number.value %} value="{{form.phone_number.value}}"{% endif %}>
+                    <input type="email" class="full" name="email" placeholder="Email" {% if form.email.value %} value="{{form.email.value}}"{% endif %}>
+                    <input type="text" class="full" name="request_move_out_date" placeholder="Requested Move Out Date" {% if form.request_move_out_date.value %} value="{{form.request_move_out_date.value}}"{% endif %}>
+                </div>
+                <div class="formulario-mid">
+                    <input type="text" class="small" name="city" placeholder="City" {% if form.city.value %} value="{{form.city.value}}"{% endif %}>
+                    <select name="state" id="">
+                        <option value="1" {% if form.city.value == "1" %}checked="checked"{% endif %}>California</option>
+                        <option value="2" {% if form.city.value == "2" %}checked="checked"{% endif %}>Texas</option>
+                    </select>
+                    <input type="text" class="small before-captcha" name="zip_code" placeholder="Zip Code" {% if form.zip_code.value %} value="{{form.zip_code.value}}"{% endif %}>
+                    {{form.captcha}}
+                    <input class="top-captcha" type="submit" value="submit">
+                </div>  
+            </form>
+        </section>
+    </main>
+{% endblock content %}
+{% block morescripts %}
+<script language='javascript' type='text/javascript'>
+    $(document).ready(function () {
+        var firstInput = $('form').find('input[type=text],input[type=password],input[type=radio],input[type=checkbox],textarea,select').filter(':visible:first');
+        if (firstInput != null) {
+            firstInput.focus();
+        }
+    });
+
+    {% for field in form %}
+    
+        {%if field.errors %}
+            {% if field.label %}
+                alert('{{field.label}}: '+'{{ field.errors }}');
+            {% else %}
+                alert('{{field.name}}: '+'{{ field.errors }}');
+            {% endif %}
+            console.log('{{ field.errors }}');
+        {%endif%}
+        {% endfor %}
+</script>
+{% endblock morescripts %}
+
+	
+
+
+
+

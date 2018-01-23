@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+{% block title %}THanks | The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% block morestyles %}
+    <link rel="stylesheet" href="{% static "css/styles-contact.css" %}">
+{% endblock morestyles %}
+{% block content %}
+    <header>
+        <a class="responsive-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="/">Home</a></li>
+                
+                <li><a href="rentals">Rentals</a></li>
+                <li id="resident">
+                    <a id="resident-link" href="tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                        <li><a href="forms">Forms</a></li>
+                        <li><a href="faq">FAQ</a></li>
+                        <li><a href="maintenance">Maintenance</a></li>
+                        <li><a href="move">Move Out</a></li>
+                    </ul>
+                </li>
+                <li><a class="active" href="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="maintenance-sec-1" style="background-image: url({% static "images/contact.jpg" %})">
+            <h1>Thank<br><b>you</b></h1>
+        </section>
+        <section class="maintenance-sec-2">
+            <div class="formulario-mid">
+                <p>Thanks for contact us, in few or some minutes we will contact you again.</p>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
+{% block morescripts %}
+{% endblock morescripts %}

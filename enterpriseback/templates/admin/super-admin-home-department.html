@@ -1,0 +1,58 @@
+{% extends "admin/super-admin-home-build.html" %}
+{% load humanize %}
+{% block mainDepatment %}
+            {%comment%}seccion Apartment{%endcomment%}
+            {%if apartments%}
+                {%for apart in apartments%}
+                <div class="mix category-0">
+                    <a href="/individual?id={{apart.depart.id}}">
+                        <div class="container-imagen" style="background-image: url(
+                        {%if apart.depart.building.picture%}
+                        {{apart.depart.building.picture.url}}
+                        {%else%}
+                        {{STATIC_URL}}images/slid-1-home.jpg
+                        {% endif %}
+
+                        );"></div>
+                        <div class="text-contenedor">
+                        <p>{{apart.depart}}</p>
+                        <b>${{apart.depart.rent|floatformat:2|intcomma}} / month</b>
+                        </div>
+                    </a>
+                    <div class="mix-color">
+                        <div class="links">
+                            <a href="/admin/department?id={{apart.depart.id}}">Edit</a>
+                            <a class="delete remove-apartment{{apart.depart.id}}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="element_to_pop_up apartment-remove-{{apart.depart.id}}">
+                    <p>Are you sure want to remove this item and all information?</p>
+                    <div class="links">
+                        
+                        <form method="post" action="">
+                            <a href="/admin/department?id={{apart.depart.id}}">Edit</a>
+                            <input type="submit"  name="removeApart" value="Remove">
+                            <input type='hidden' name='id' value='{{apart.depart.id}}' />
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+
+                {%endfor%}
+            {%else%}mensaje de error
+                    {%comment%}mensaje de error{%endcomment%}
+            {%endif%}
+{% endblock mainDepatment %}
+
+{% block scriptsApartment %}
+    {%if apartments%}
+    {%for apart in apartments%}
+        $('.remove-apartment{{apart.depart.id}}').bind('click', function(e) {
+            e.preventDefault();
+            $('.apartment-remove-{{apart.depart.id}}').bPopup();
+        });
+    {%endfor%}
+    {%endif%}
+{% endblock scriptsApartment %}

@@ -1,0 +1,98 @@
+{% extends "admin/adminBase.html" %}
+{% load staticfiles %}
+{% load humanize %}
+    {% block style %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/main-admin.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/styles-admin.css">
+    {% endblock style %}
+
+    {%block main%}
+	<main>
+        <h1>{% if departments %}Available rentals at:{%else%}No Assigned Rentals{% endif %}<br>
+            <span>{% if manager %}
+                    {% if manager.building%}
+                        {{manager.building}}
+                    {% else %} 
+                        {% comment %}
+                            No apartments
+                        {% endcomment %}
+                    {% endif %}
+                {%else%}Has assigned building{% endif %}
+            </span>
+        </h1>
+		<section class="rentals-sec-2">
+			<div class="controls">
+                <button class="filter" data-filter="all">All</button>
+                <button class="filter" data-filter=".category-0">0 Bedroom</button>
+                <button class="filter" data-filter=".category-1">1 Bedroom</button>
+                <button class="filter" data-filter=".category-2">2 Bedroom</button>
+                <button class="filter" data-filter=".category-3">3+ Bedroom</button>
+            </div>
+            <a class="add" href="/admin/department">add apartament</a>
+            <div id="Container" class="container">
+            {% if departments %}
+            {% for depa in departments %}
+                <div class="mix {% if depa.depart.bedrooms >= 3  %}category-3{% elif depa.depart.bedrooms == 2 %}category-2{% elif depa.depart.bedrooms == 1 %}category-1{% elif depa.depart.bedrooms == 0 or  not depa.depart.bedrooms %}category-0{% endif %}">
+                    <a href="/admin/department?id={{depa.depart.id}}">
+                        <div class="container-imagen" style="background-image: url(
+                        {%if depa.depart.building.picture%}
+                        {{depa.depart.building.picture.url}}
+                        {%else%}
+                        {{STATIC_URL}}images/slid-1-home.jpg 
+                        {%endif%});"></div>
+                        <div class="text-contenedor">
+                            <p>{{depa.depart}}</p>
+                            <b>${{depa.depart.rent|floatformat:2|intcomma}} / month</b>
+                        </div>
+                    </a>
+                    <div class="mix-color">
+                        <div class="links">
+                            <a href="/admin/department?id={{depa.depart.id}}">Edit</a>
+                            <a class="delete my-button remove-apartment{{depa.depart.id}}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                {%comment%}
+
+                {%endcomment%}
+            {% endfor %}
+            {% endif %}
+            <div class="gap"></div>
+            <div class="gap"></div>
+            </div>
+		</section>
+
+
+            {% if departments %}
+            {% for depa in departments %}
+                
+                <div id="" class="element_to_pop_up apartment-remove-{{depa.depart.id}}">
+                    <p>Are you sure want to remove this item and all information? {{depa.depart.id}}</p>
+                    <div class="links">
+                        <form method="post" action="">
+                            <a href="/admin/department?id={{depa.depart.id}}">Edit</a>
+                            <input type="submit"  class="delete" name="removeApart" value="Remove">
+                            <input type='hidden' name='id' value='{{depa.depart.id}}' />
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+
+
+	</main>
+    {%endblock main%}
+
+{% block morescripts %}
+<script type="text/javascript">
+    {%if departments%}
+    {%for apart in departments%}
+        $('.remove-apartment{{apart.depart.id}}').bind('click', function(e) {
+            e.preventDefault();
+            $('.apartment-remove-{{apart.depart.id}}').bPopup();
+        });
+    {%endfor%}
+    {%endif%}
+</script>
+{% endblock morescripts %}

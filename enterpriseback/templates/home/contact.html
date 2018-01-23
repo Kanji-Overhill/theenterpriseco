@@ -1,0 +1,94 @@
+{% extends "base/base.html" %}
+{% block title %}Contact | The Enterprise Company{% endblock title %}
+{% load staticfiles %}
+{% block morestyles %}
+    <link rel="stylesheet" href="{% static "css/styles-contact.css" %}">
+    <style type="text/css">
+        .error{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock morestyles %}
+{% block content %}
+    <header>
+        <a class="responsive-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt=""></a>
+        <nav>
+            <ul class="menu-principal">
+                <li><a href="/">Home</a></li>
+                
+                <li><a href="rentals">Rentals</a></li>
+                <li id="resident">
+                    <a id="resident-link" href="tenants">Tenant resources</a>
+                    <ul class="menu-secundario">
+                        <li><a href="forms">Forms</a></li>
+                        <li><a href="faq">FAQ</a></li>
+                        <li><a href="maintenance">Maintenance</a></li>
+                        <li><a href="move">Move Out</a></li>
+                    </ul>
+                </li>
+                <li><a class="active" href="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="maintenance-sec-1" style="background-image: url({% static "images/contact.jpg" %})">
+            <h1>Contact<br><b>us</b></h1>
+        </section>
+        <section class="maintenance-sec-3">
+            <form action="/contact" method="POST">
+                <div class="formulario-mid">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <input type="text" class="full" name="name" placeholder="Your name" {% if form.name.value %} value="{{form.name.value}}"{% endif %}>
+                    {% if form.name.errors %}<div class="error">{{ form.name.errors }} </div>{%endif%}  
+                    <input type="text" class="full" name="phone_number" placeholder="Phone number"{% if form.phone_number.value %} value="{{form.phone_number.value}}"{% endif %}>
+                    {% if form.phone_number.errors %}<div class="error">{{ form.phone_number.errors }} </div>{%endif%}  
+                    <input type="email" class="full" name="email" placeholder="Email" {% if form.email.value %} value="{{form.email.value}}"{% endif %}>
+                    {% if form.email.errors %}<div class="error">{{ form.email.errors }} </div>{%endif%}  
+                     <input type="text" class="full" name="subject" placeholder="Subject"{% if form.subject.value %} value="{{form.subject.value}}"{% endif %}>
+                     {% if form.subject.errors %}<div class="error">{{ form.subject.errors }} </div>{%endif%}  
+                     <textarea name="description" class="bottom-captcha">{% if form.description.value %}{{form.description.value}}{% endif %}</textarea>
+                     {% if form.description.errors %}<div class="error">{{ form.description.errors }} </div>{%endif%}  
+                     {{form.captcha}}
+                                             <input type="submit" value="Submit">}
+                </div>
+                <div class="formulario-mid">
+                    <div class="title-rent-head">
+                     <p><b>Contact us</b></p>
+                    </div>
+                    <p class="p-mid">Have a question? You can contact us either by phone, email, or by completing the form below. If you have a maintenance request, please visit our tenant resources page within our site.<br>
+                    </p>
+                    
+                </div>  
+            </form>
+        </section>
+    </main>
+{% endblock content %}
+{% block morescripts %}
+    <script language='javascript' type='text/javascript'>
+        $(document).ready(function () {
+            var firstInput = $('form').find('input[type=text],input[type=password],input[type=radio],input[type=checkbox],textarea,select').filter(':visible:first');
+            if (firstInput != null) {
+                firstInput.focus();
+            }
+        });
+        {% for field in form %}
+    
+        {%if field.errors %}
+            {% if field.label %}
+                alert('{{field.label}}: '+'{{ field.errors }}');
+            {% else %}
+                alert('{{field.name}}: '+'{{ field.errors }}');
+            {% endif %}
+            console.log('{{ field.errors }}');
+        {%endif%}
+        {% endfor %}
+    </script>
+{% endblock morescripts %}
