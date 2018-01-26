@@ -50,20 +50,6 @@
                 <button class="filter" data-filter=".category-3">3+ Bedroom</button>
             </div>
             <div id="Container" class="container">
-            {% if departments %}
-            {% for depa in departments %}
-                <div class="mix category-0">
-                    <a href="/individual?id={{depa.id}}">
-                        <div class="container-imagen" style="background-image: url({{depa.building.picture.url}});"></div>
-                        <div class="text-contenedor">
-                        <p>{{depa.building.adress}}</p>
-                        <b>${{depa.rent|intcomma}} / month</b>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-            {% endif %}
-
 
             <div class="gap"></div>
             <div class="gap"></div>
