@@ -11,7 +11,10 @@ Backend   @xtornasol512
 
 1. Instalar Dependencias
 ```
-$ pip install -r requirements.txt
+$ source .venv/bin/activate
+(venv)$ pip install -r requirements.txt
+(venv)$ python manage.py migrate
+(venv)$ python manage.py runserver 8000
 
 ```
 2. Crear branch de develop

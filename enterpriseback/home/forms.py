@@ -19,7 +19,9 @@ class MaintenanceForm(forms.Form):
     kind_pet = forms.CharField(required=False, max_length=50)
     option_maintenance = forms.ChoiceField(required=True,choices=CHOICES_MAINTENANCE)
     description = forms.CharField(required=False, max_length=350)
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(attrs={
+                              'theme' : 'clean',
+                            })
 
 
 class ContactForm(forms.Form):

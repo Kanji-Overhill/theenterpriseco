@@ -1,14 +1,20 @@
-# Django==1.9.7
+Django==1.9.7
 # Heroku requirements
 dj-database-url==0.4.2
 gunicorn==19.7.1
 psycopg2==2.7.3.1
 whitenoise==3.3.1
-# app requirement
-# catcha
-# django_cleanup
-# imagekit
+
+# app requirements
 # Pillow
+Pillow==5.0.0
+pilkit==2.0
+# imagekit
+django-imagekit==4.0.2
+# catcha
+django-recaptcha==1.0.6
+# django_cleanup
+django-cleanup==2.1.0
 
 # temp
-Flask==0.12.2
+# Flask==0.12.2
