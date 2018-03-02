@@ -5,7 +5,7 @@ import dj_database_url
 
 LOCAL_SETTINGS = ast.literal_eval(os.environ['LOCAL_SETTINGS'])
 
-DEBUG = ast.literal_eval(os.environ['LOCAL_SETTINGS'])
+DEBUG = ast.literal_eval(os.environ['DEBUG_STATE'])
 
 if LOCAL_SETTINGS:
     from enterpriseback.local_set import *
