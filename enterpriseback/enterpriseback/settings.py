@@ -1,6 +1,40 @@
 #!/usr/bin/env python
 import os
-from enterpriseback.local_set import *
+import ast
+import dj_database_url
+
+LOCAL_SETTINGS = ast.literal_eval(os.environ['LOCAL_SETTINGS'])
+
+DEBUG = ast.literal_eval(os.environ['LOCAL_SETTINGS'])
+
+if LOCAL_SETTINGS:
+    from enterpriseback.local_set import *
+else:
+    DATABASE_URL = os.environ['DATABASE_URL']
+    DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+    #EMail Settings
+    EMAIL_USE_TLS = ast.literal_eval(os.environ['EMAIL_USE_TLS'])
+    EMAIL_HOST = os.environ['EMAIL_HOST']
+    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+    EMAIL_PORT = os.environ['EMAIL_PORT']
+
+    TO_SEND = os.environ['TO_SEND']
+    SENDER = os.environ['SENDER']
+    SENDER_CONTACT = os.environ['SENDER_CONTACT']
+    SENDER_CONTACT_PASS =os.environ['SENDER_CONTACT_PASS']
+
+    #CATCHA SETTINGS
+    RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
+    RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+    NOCAPTCHA = ast.literal_eval(os.environ['NOCAPTCHA'])
+    RECAPTCHA_USE_SSL = ast.literal_eval(os.environ['RECAPTCHA_USE_SSL'])
+
+    ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS']
+
+    SECRET_KEY = os.environ['SECRET_KEY']
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Application definition
