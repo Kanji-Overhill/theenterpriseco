@@ -19,7 +19,15 @@ from buildings.forms import BuildingForm, DepartmentForm
 from buildings.models import Building, Department, NearbyAtraction, DepartmenGalery
 
 from .forms import MaintenanceForm, ContactForm, MoveOutForm
-from enterpriseback.local_set import TO_SEND,SENDER,SENDER_CONTACT,SENDER_CONTACT_PASS,EMAIL_HOST,EMAIL_PORT,EMAIL_USE_TLS
+from django.conf import settings
+
+TO_SEND = settings.TO_SEND
+SENDER = settings.SENDER
+SENDER_CONTACT = settings.SENDER_CONTACT
+SENDER_CONTACT_PASS = settings.SENDER_CONTACT_PASS
+EMAIL_HOST = settings.EMAIL_HOST
+EMAIL_PORT = settings.EMAIL_PORT
+EMAIL_USE_TLS = settings.EMAIL_USE_TLS
 
 # Create your views here.
 def index(request):
