@@ -2,8 +2,11 @@
 # This migrates automatically after each build to Heroku
 
 echo "=> Begin post compile script..."
-# First, apply migrations to the schema
-#python ./enterpriseback/manage.py migrate
 
-# Second load data
-#python ./enterpriseback/manage.py loaddata ./enterpriseback/fixtures/initial_data.json
+echo "Applying migrations to the schema"
+python ./enterpriseback/manage.py migrate
+
+echo "Loading data"
+python ./enterpriseback/manage.py loaddata ./enterpriseback/fixtures/initial_data.json
+
+echo "Finish postcompile"
