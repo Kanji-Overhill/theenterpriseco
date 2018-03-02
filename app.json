@@ -2,70 +2,73 @@
   "name": "The Enterprise Co",
   "description": "Official Page for The Enterprise Co",
   "keywords": ["python", "django" ],
+  "scripts": {
+    "postdeploy": "bin/post_compile"
+  },
   "env": {
     "SECRET_KEY": {
       "description": "The secret key for the Django application.",
-      "generator": "secret"
+      "required": true
     },
     "DEBUG_STATE": {
       "description": "Control debug state on app",
-      "generator": "secret"
+      "required": true
     },
     "EMAIL_USE_TLS": {
       "description": "Boolean about to use TLS",
-      "generator": "secret"
+      "required": true
     },
     "EMAIL_HOST": {
       "description": "SMPT host",
-      "generator": "secret"
+      "required": true
     },
     "EMAIL_HOST_USER": {
       "description": "SMTP user",
-      "generator": "secret"
+      "required": true
     },
     "EMAIL_HOST_PASSWORD": {
       "description": "SMPT password",
-      "generator": "secret"
+      "required": true
     },
     "EMAIL_PORT": {
       "description": "Email Port",
-      "generator": "secret"
+      "required": true
     },
     "TO_SEND": {
       "description": "To send email",
-      "generator": "secret"
+      "required": true
     },
     "SENDER": {
       "description": "Email who send emails",
-      "generator": "secret"
+      "required": true
     },
     "SENDER_CONTACT": {
       "description": "Sender contact email",
-      "generator": "secret"
+      "required": true
     },
     "SENDER_CONTACT_PASS": {
       "description": "Sender contact email password",
-      "generator": "secret"
+      "required": true
     },
     "RECAPTCHA_PUBLIC_KEY": {
       "description": "Public key recaptcha google",
-      "generator": "secret"
+      "required": true
     },
     "RECAPTCHA_PRIVATE_KEY": {
       "description": "Secret key recaptcha",
-      "generator": "secret"
+      "required": true
     },
     "NOCAPTCHA": {
       "description": "boolean if No captcha available",
-      "generator": "secret"
+      "generator": true
     },
     "RECAPTCHA_USE_SSL": {
       "description": "Boolean use SSL on recaptcha ",
-      "generator": "secret"
+      "generator": true
     },
     "ALLOWED_HOSTS": {
       "description": "Server permited by django to host",
-      "generator": "secret"
+      "generator": true
     }
   },
   "formation": {

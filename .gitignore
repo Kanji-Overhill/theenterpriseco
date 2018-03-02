@@ -11,3 +11,4 @@ enterpriseback/media
 *.dbsqlite3
 *.sqlite3
 *.swp
+*.export_variables
