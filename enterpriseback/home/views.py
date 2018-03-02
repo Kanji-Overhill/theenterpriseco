@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.http import HttpResponseRedirect,HttpResponse
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
@@ -116,15 +116,15 @@ def move(request):
             html_content = html_template.render(context)
             subject_msg = "The Enterprise Move Out Web Form | " + name
             with get_connection(
-                host=EMAIL_HOST, 
-                port=EMAIL_PORT, 
-                username=SENDER_CONTACT, 
-                password=SENDER_CONTACT_PASS, 
+                host=EMAIL_HOST,
+                port=EMAIL_PORT,
+                username=SENDER_CONTACT,
+                password=SENDER_CONTACT_PASS,
                 user_tls=EMAIL_USE_TLS
             ) as connection:
                 msg = EmailMultiAlternatives(subject_msg, text_content, to=[TO_SEND],connection=connection)
                 msg.attach_alternative(html_content, "text/html")
-                msg.send() 
+                msg.send()
             return HttpResponseRedirect('/?successmsg=True')
         else:
             """Errors"""
@@ -154,15 +154,15 @@ def contact(request):
             html_content = html_template.render(context)
             subject_msg = "The Enterprise Contact Web Form | " + name
             with get_connection(
-                host=EMAIL_HOST, 
-                port=EMAIL_PORT, 
-                username=SENDER_CONTACT, 
-                password=SENDER_CONTACT_PASS, 
+                host=EMAIL_HOST,
+                port=EMAIL_PORT,
+                username=SENDER_CONTACT,
+                password=SENDER_CONTACT_PASS,
                 user_tls=EMAIL_USE_TLS
             ) as connection:
                 msg = EmailMultiAlternatives(subject_msg, text_content, to=[TO_SEND],connection=connection)
                 msg.attach_alternative(html_content, "text/html")
-                msg.send() 
+                msg.send()
             return HttpResponseRedirect('/?successmsg=True')
         else:
             """Errors"""
@@ -196,7 +196,7 @@ def individual(request):
             print depa.building
             galery = DepartmenGalery.objects.filter(departmen=depa)
             atraction = NearbyAtraction.objects.filter(building=depa.building)
-            return render(request, 'home/individual.html', 
+            return render(request, 'home/individual.html',
                         {"department": depa, "galery":galery, "atraction":atraction, "manager": manager})
     else:
         try:
@@ -210,12 +210,12 @@ def individual(request):
                 manager = None
             galery = DepartmenGalery.objects.filter(departmen=depa)
             atraction = NearbyAtraction.objects.filter(building=depa.building)
-            return render(request, 'home/individual.html', 
+            return render(request, 'home/individual.html',
                         {"department": depa, "galery":"galery", "atraction":atraction, "manager": manager})
 
     return render(request, 'home/individual.html', {"error": "There is no department available"})
 
-    
+
 
 def login(request):
     if not request.user.is_anonymous():
@@ -224,13 +224,13 @@ def login(request):
     if request.method=='POST':
         Aform=AuthenticationForm(request.POST)
         if Aform.is_valid:
-            
+
             user=request.POST['username']
             passw=request.POST['password']
 
-            
+
             access=authenticate(username=user,password=passw)
-            
+
             if access is not None:
                 if access.is_active:
                     dj_login(request,access)
@@ -243,12 +243,12 @@ def login(request):
         else:
             error="Invalid data"
         ctx={'Aform':Aform, 'error':error, "username":user}
-        return render_to_response('admin/admin-sesion.html',ctx,context_instance=RequestContext(request))
+        return render(request, 'admin/admin-sesion.html', ctx)
 
     else:
         Aform=AuthenticationForm()
-        
-    return render_to_response('admin/admin-sesion.html',{'Aform':Aform},context_instance=RequestContext(request))
+
+    return render(request, 'admin/admin-sesion.html', {'Aform':Aform})
 
 
 
@@ -273,7 +273,7 @@ def admin(request):
                 apart.delete()
             except :
                 error="Could not delete"
-       
+
         if 'removeBuild' in request.POST:
             idA=request.POST.get("id","")
             try:
@@ -291,7 +291,7 @@ def admin(request):
                     pass
                 build.delete()
 
-        
+
         if 'removeManager' in request.POST:
             activem=True
             idM=request.POST.get("id","")
@@ -302,7 +302,7 @@ def admin(request):
                 user.delete()
             except :
                 error="Could not delete"
-        
+
         if 'editManager' in request.POST:
             activem=True
             name =request.POST.get("name","")
@@ -343,7 +343,7 @@ def admin(request):
 
             else:
                 error="Manager not found"
-        
+
         if 'newManager' in request.POST:
             activem=True
             name =request.POST.get("name","")
@@ -387,7 +387,7 @@ def admin(request):
 
 
         ctx={'managers':managers, 'buildings':buildings, "apartments":apAndGal, "activem": activem, "error":error}
-        return render_to_response('admin/super-admin-home-dash.html',ctx,context_instance=RequestContext(request))
+        return render(request, 'admin/super-admin-home-dash.html',ctx)
     elif Manager.objects.filter(user = request.user).exists():
         if 'removeApart' in request.POST:
             idA=request.POST.get("id","")
@@ -452,8 +452,7 @@ def adminBuilding(request):
 
                     return HttpResponseRedirect('/admin')
                 error="Error with Data, Try Again"
-                return render_to_response('admin/super-admin-edit-building.html',{'Bform':Bform, 'error':error, "id":idB},
-                    context_instance=RequestContext(request))
+                return render(request, 'admin/super-admin-edit-building.html', {'Bform':Bform, 'error':error, "id":idB})
             elif 'removeApart' in request.POST:
                 idA=request.POST.get("idA","")
                 try:
@@ -489,12 +488,10 @@ def adminBuilding(request):
             else:
                 error="id Not found"
                 Bform =BuildingForm()
-                return render_to_response('admin/super-admin-edit-building.html',{'Bform':Bform, "error":error},
-            context_instance=RequestContext(request))
+                return render(request, 'admin/super-admin-edit-building.html',{'Bform':Bform, "error":error})
         else:
             Bform =BuildingForm()
-            return render_to_response('admin/super-admin-edit-building.html',{'Bform':Bform},
-            context_instance=RequestContext(request))
+            return render(request, 'admin/super-admin-edit-building.html',{'Bform':Bform})
     else:
         return HttpResponseRedirect('/Doesnthavepermission')
 
@@ -512,7 +509,7 @@ def adminDepartment(request):
         manager=Manager.objects.get(user = request.user)
         ctx.update({"manager":manager})
         if not manager.building:
-           return HttpResponseRedirect('/admin') 
+           return HttpResponseRedirect('/admin')
     else:
         return HttpResponseRedirect('/Doesnthavepermission')
 
@@ -545,7 +542,7 @@ def adminDepartment(request):
             return HttpResponseRedirect('/admin')
         if manager:
             if not manager.building == depa.building:
-                return HttpResponseRedirect('/admin') 
+                return HttpResponseRedirect('/admin')
 
         if editD:
             Dform=DepartmentForm(request.POST, instance=depa)
