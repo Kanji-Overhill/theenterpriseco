@@ -2,11 +2,15 @@
 {% block title %}The Enterprise Company{% endblock title %}
 {% load staticfiles %}
 {% load humanize %}
+{% block headtags %}
+    {# Verify tags on google console #}
+    <meta name="google-site-verification" content="qVRPmYTSBFcZVb1Qwr6FWJB1wL_d3KuGm-AT749gjSg" />
+{% endblock headtags %}
 {% block morestyles %}
 	<link rel="stylesheet" href="{% static "css/styles-index.css" %}">
 {% endblock morestyles %}
 {% block content %}
-	<header> 
+	<header>
 	    <a class="responsive-menu">
 	    	<span></span>
 	    	<span></span>
@@ -16,7 +20,7 @@
 		<nav>
 			<ul class="menu-principal">
 				<li><a class="active" href="/">Home</a></li>
-				
+
 				<li><a href="/rentals">Rentals</a></li>
 				<li id="resident">
 				    <a id="resident-link" href="/tenants">Tenant resources</a>
@@ -50,7 +54,7 @@
                             {%if depa.depart.building.picture%}
                             {{depa.depart.building.picture.url}}
                             {%else%}
-                            {{STATIC_URL}}images/slid-1-home.jpg 
+                            {{STATIC_URL}}images/slid-1-home.jpg
                             {%endif%}
                             )"></div>
 					        <div class="texto">
@@ -62,16 +66,16 @@
 					</div>
 				</div>
 			{% endfor %}
-			</div>	
+			</div>
 		{% endif %}
 		{% if not departments %}
 			<div class="title-rent-head">
 				<p>There are currently no rentals available. Please check back soon.</p>
 			</div>
 			<div class="slid-home"></div>
-			
+
 		{% endif %}
-			
+
 			<div class="title-rent-head">
 				<p>About Us</p>
 			</div>
@@ -134,5 +138,5 @@
     {% endif %}
 </script>
 {% endblock morescripts %}
-	
+
 
