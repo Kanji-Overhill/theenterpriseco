@@ -132,8 +132,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_FINDERS = (
-    ‘django.contrib.staticfiles.finders.FileSystemFinder’,
-    ‘django.contrib.staticfiles.finders.AppDirectoriesFinder’,
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 # Console logging for DEBUG=False - Probably should disable if DEBUG = True
 LOGGING = {
