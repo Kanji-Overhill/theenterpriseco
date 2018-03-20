@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'django_cleanup',
     'captcha',
     'imagekit',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -108,8 +109,18 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_QUERYSTRING_AUTH = False # This will make sure that the file URL does not have unnecessary parameters like your access key.
+AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
+
+#static media settings
+MEDIA_STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+MEDIA_URL = STATIC_URL + 'media/'
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Server place staticfiles
@@ -117,9 +128,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'statics'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-MEDIA_URL = '/media/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_FINDERS = (
+    ‘django.contrib.staticfiles.finders.FileSystemFinder’,
+    ‘django.contrib.staticfiles.finders.AppDirectoriesFinder’,
+)
 # Console logging for DEBUG=False - Probably should disable if DEBUG = True
 LOGGING = {
     'version': 1,
