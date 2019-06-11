@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="{% static "css/styles-individual.css" %}">
 {% endblock morestyles %}
 {% block content %}
-    
-        
-    
-    <header> 
+
+
+
+    <header>
         <a class="responsive-menu">
             <span></span>
             <span></span>
@@ -20,15 +20,15 @@
         <nav>
             <ul class="menu-principal">
                 <li><a class="active" href="/">Home</a></li>
-                
+
                 <li><a href="/rentals">Rentals</a></li>
                 <li id="resident">
                     <a id="resident-link" href="/tenants">Tenant resources</a>
                     <ul class="menu-secundario">
                         <li><a href="/forms">Forms</a></li>
                         <li><a href="/faq">FAQ</a></li>
-                        <li><a href="/maintenance">Maintenance</a></li>
-                        <li><a href="/move">Move Out</a></li>
+                        <li><a href="/contact">Maintenance</a></li>
+                      	<li><a href="/contact">Move Out</a></li>
                     </ul>
                 </li>
                 <li><a href="/contact">Contact</a></li>
@@ -71,7 +71,7 @@
                         <p>Unit Description</p>
                         <ul>
                             <li>{{department.unit_description|linebreaksbr}}</li>
-                            
+
                         </ul>
                         <p>Location Description</p>
                         <ul>
@@ -88,17 +88,17 @@
                         {% else %}
                             <div style="background-image: url(http://placehold.it/600x500&text=No+Image+Galery);"></div>
                         {% endif %}
-                        
+
                     </div>
                     <div class="slid-edit-3" id="slid-main2">
                         {% if galery %}
                         {% for photo in galery  %}
-                        <div style="background-image: url({{photo.picture.url}});"></div> 
+                        <div style="background-image: url({{photo.picture.url}});"></div>
                         {% endfor %}
                         {% else %}
                             <div style="background-image: url(http://placehold.it/200x150);"></div>
                         {% endif %}
-                    
+
                     </div>
                     <p class="titulo-edit-2">Neighborhood Amenities</p>
                     <div class="slid-edit-2" id="slid-neigh">
@@ -116,7 +116,7 @@
                                  <p>Not Neighborhood Amenities</p>
                              </div>
                     {% endif %}
-                        
+
                     </div>
                     <div class="slid-edit-3" id="slid-neigh2">
                         {% if atraction %}
@@ -126,13 +126,13 @@
                         {% endfor %}
                         {% else %}
                                 <div style="background-image: url(http://placehold.it/200x150);"></div>
-                               
+
                         {% endif %}
                     </div>
                     <form>
                         <input type="hidden" id="geocomplete" placeholder="Adress Hidden" size="90" />
                     </form>
-    
+
                     <div class="map_canvas"></div>
                 </div>
             </div>
@@ -147,21 +147,19 @@
 
 {% endblock content %}
 {% block morescripts %}
-    
+
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBFsw3hfvVqgCzoMuKxEH_FyF5ua7lCVPY&amp;libraries=places"></script>
     <script src="{% static "js/jquery.geocomplete.min.js" %}"></script>
     <script>
       $(function(){
-        
+
         var options = {
           map: ".map_canvas",
           location: "{{department.building.adress}}"
         };
-        
+
         $("#geocomplete").geocomplete(options);
-        
+
       });
     </script>
 {% endblock morescripts %}
-
-    

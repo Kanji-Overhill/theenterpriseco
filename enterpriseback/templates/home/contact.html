@@ -22,15 +22,15 @@
         <nav>
             <ul class="menu-principal">
                 <li><a href="/">Home</a></li>
-                
+
                 <li><a href="rentals">Rentals</a></li>
                 <li id="resident">
                     <a id="resident-link" href="tenants">Tenant resources</a>
                     <ul class="menu-secundario">
                         <li><a href="forms">Forms</a></li>
                         <li><a href="faq">FAQ</a></li>
-                        <li><a href="maintenance">Maintenance</a></li>
-                        <li><a href="move">Move Out</a></li>
+                        <li><a href="/contact">Maintenance</a></li>
+                      	<li><a href="/contact">Move Out</a></li>
                     </ul>
                 </li>
                 <li><a class="active" href="contact">Contact</a></li>
@@ -42,31 +42,16 @@
             <h1>Contact<br><b>us</b></h1>
         </section>
         <section class="maintenance-sec-3">
-            <form action="/contact" method="POST">
-                <div class="formulario-mid">
-                    {% csrf_token %}
-                    {{ form.non_field_errors }}
-                    <input type="text" class="full" name="name" placeholder="Your name" {% if form.name.value %} value="{{form.name.value}}"{% endif %}>
-                    {% if form.name.errors %}<div class="error">{{ form.name.errors }} </div>{%endif%}  
-                    <input type="text" class="full" name="phone_number" placeholder="Phone number"{% if form.phone_number.value %} value="{{form.phone_number.value}}"{% endif %}>
-                    {% if form.phone_number.errors %}<div class="error">{{ form.phone_number.errors }} </div>{%endif%}  
-                    <input type="email" class="full" name="email" placeholder="Email" {% if form.email.value %} value="{{form.email.value}}"{% endif %}>
-                    {% if form.email.errors %}<div class="error">{{ form.email.errors }} </div>{%endif%}  
-                     <input type="text" class="full" name="subject" placeholder="Subject"{% if form.subject.value %} value="{{form.subject.value}}"{% endif %}>
-                     {% if form.subject.errors %}<div class="error">{{ form.subject.errors }} </div>{%endif%}  
-                     <textarea name="description" class="bottom-captcha">{% if form.description.value %}{{form.description.value}}{% endif %}</textarea>
-                     {% if form.description.errors %}<div class="error">{{ form.description.errors }} </div>{%endif%}  
-                     {{form.captcha}}
-                                             <input type="submit" value="Submit">}
-                </div>
+            <form action="/contact" method="POST" style="display: flex">
+
                 <div class="formulario-mid">
                     <div class="title-rent-head">
                      <p><b>Contact us</b></p>
                     </div>
-                    <p class="p-mid">Have a question? You can contact us either by phone, email, or by completing the form below. If you have a maintenance request, please visit our tenant resources page within our site.<br>
+                    <p class="p-mid">Have a question, planning on moving out or have a maintenance request? You can call us directly at (510) 444 0876 or alternatively, you can email us at theenterprisecom@gmail.com.<br>
                     </p>
-                    
-                </div>  
+
+                </div>
             </form>
         </section>
     </main>
@@ -80,7 +65,7 @@
             }
         });
         {% for field in form %}
-    
+
         {%if field.errors %}
             {% if field.label %}
                 alert('{{field.label}}: '+'{{ field.errors }}');

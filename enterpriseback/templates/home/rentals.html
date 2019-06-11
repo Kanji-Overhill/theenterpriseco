@@ -16,15 +16,15 @@
         <nav>
             <ul class="menu-principal">
                 <li><a href="/">Home</a></li>
-                
+
                 <li><a class="active" href="/rentals">Rentals</a></li>
                 <li id="resident">
                     <a id="resident-link" href="/tenants">Tenant resources</a>
                     <ul class="menu-secundario">
                         <li><a href="/forms">Forms</a></li>
                         <li><a href="/faq">FAQ</a></li>
-                        <li><a href="/maintenance">Maintenance</a></li>
-                        <li><a href="/move">Move Out</a></li>
+                        <li><a href="/contact">Maintenance</a></li>
+                        <li><a href="/contact">Move Out</a></li>
                     </ul>
                 </li>
                 <li><a href="/contact">Contact</a></li>
@@ -53,7 +53,7 @@
                             {%if depa.depart.building.picture%}
                             {{depa.depart.building.picture.url}}
                             {%else%}
-                            {{STATIC_URL}}images/slid-1-home.jpg 
+                            {{STATIC_URL}}images/slid-1-home.jpg
                             {%endif%}
                             );"></div>
                             <div class="text-contenedor">
@@ -61,7 +61,7 @@
                             <b>${{depa.depart.rent|floatformat:2|intcomma}} / month</b>
                             </div>
                         </a>
-                    </div>   
+                    </div>
                 {% endfor %}
                 {% endif %}
             <div class="gap"></div>
@@ -71,6 +71,3 @@
     </main>
 {% endblock content %}
 {% block morescripts %}{% endblock morescripts %}
-	
-
-

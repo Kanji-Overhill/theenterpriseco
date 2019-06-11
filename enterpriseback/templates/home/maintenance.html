@@ -15,15 +15,15 @@
         <nav>
             <ul class="menu-principal">
                 <li><a href="/">Home</a></li>
-                
+
                 <li><a href="/rentals">Rentals</a></li>
                 <li id="resident">
                     <a id="resident-link" href="/tenants">Tenant resources</a>
                     <ul class="menu-secundario">
                         <li><a href="/forms">Forms</a></li>
                         <li><a href="/faq">FAQ</a></li>
-                        <li><a class="active" href="/maintenance">Maintenance</a></li>
-                        <li><a href="/move">Move Out</a></li>
+                        <li><a class="active" href="/contact">Maintenance</a></li>
+                      	<li><a href="/contact">Move Out</a></li>
                     </ul>
                 </li>
                 <li><a href="/contact">Contact</a></li>
@@ -45,7 +45,7 @@
         </section>
         <section class="maintenance-sec-3">
             <form action="" method="POST" enctype="multipart/form-data">
-            
+
                 <div class="formulario-mid">{% csrf_token %}
                     <input type="text" class="full" name="name" placeholder="Your name" {% if form.name.value %} value="{{form.name.value}}"{% endif %}>
                     <input type="text" class="full" name="adress" placeholder="Address" {% if form.adress.value %} value="{{form.adress.value}}"{% endif %}>
@@ -74,7 +74,7 @@
                     <div class="radio-option">
                         <input type="radio" name="option_maintenance" value="2" {% if form.option_maintenance.value == "2" %}checked="checked"{% endif %}><p> I give The Enterprise Company, and/or its authorized third party independent contractor, permission to enter my dwelling while I am not there to complete the requested repairs below.</p>
                     </div>
-                </div>  
+                </div>
                 <div class="formulario-full">
                     <div>
                         <textarea name="description" placeholder="Enter your text here">{% if form.description.value %}{{form.description.value}}{% endif %}</textarea>
@@ -87,7 +87,7 @@
                 </div>
             </form>
             <p class="p-fot"><b>Please note:</b><br>
-            Damage caused by your negligence or misuse -- including, but not limited to plumbing stoppages or overflow -- is your responsibility.  Repairs will be made, but you will be charged for the cost of labor and materials.</p> 
+            Damage caused by your negligence or misuse -- including, but not limited to plumbing stoppages or overflow -- is your responsibility.  Repairs will be made, but you will be charged for the cost of labor and materials.</p>
         </section>
     </main>
 {% endblock content %}
@@ -100,7 +100,7 @@
         }
     });
     {% for field in form %}
-    
+
         {%if field.errors %}
             {% if field.label %}
                 alert('{{field.label}}: '+'{{ field.errors }}');
@@ -112,8 +112,3 @@
         {% endfor %}
 </script>
 {% endblock morescripts %}
-	
-
-
-
-

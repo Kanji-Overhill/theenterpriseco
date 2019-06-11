@@ -15,15 +15,15 @@
         <nav>
             <ul class="menu-principal">
                 <li><a href="/">Home</a></li>
-                
+
                 <li><a href="/rentals">Rentals</a></li>
                 <li id="resident">
                     <a id="resident-link" href="/tenants">Tenant resources</a>
                     <ul class="menu-secundario">
                         <li><a href="/forms">Forms</a></li>
                         <li><a href="/faq">FAQ</a></li>
-                        <li><a href="/maintenance">Maintenance</a></li>
-                        <li><a class="active" href="/move">Move Out</a></li>
+                        <li><a href="/contact">Maintenance</a></li>
+                      	<li><a  href="/contact">Move Out</a></li>
                     </ul>
                 </li>
                 <li><a href="/contact">Contact</a></li>
@@ -60,7 +60,7 @@
                     <input type="text" class="small before-captcha" name="zip_code" placeholder="Zip Code" {% if form.zip_code.value %} value="{{form.zip_code.value}}"{% endif %}>
                     {{form.captcha}}
                     <input class="top-captcha" type="submit" value="submit">
-                </div>  
+                </div>
             </form>
         </section>
     </main>
@@ -75,7 +75,7 @@
     });
 
     {% for field in form %}
-    
+
         {%if field.errors %}
             {% if field.label %}
                 alert('{{field.label}}: '+'{{ field.errors }}');
@@ -87,9 +87,3 @@
         {% endfor %}
 </script>
 {% endblock morescripts %}
-
-	
-
-
-
-
