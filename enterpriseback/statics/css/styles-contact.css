@@ -7,10 +7,10 @@
     -webkit-transition: all 1s;
 	text-align: left;
 }
-.maintenance-sec-1 h1{ 
+.maintenance-sec-1 h1{
 	width: 73.9%;
 	max-width: 1010px;
-	margin: 0 auto; 
+	margin: 0 auto;
 	font-size: 72px;
   text-align: center;
 	font-weight: 300;
@@ -43,6 +43,7 @@
   width: 50%;
   vertical-align: top;
   display: inline-block;
+	margin: 0 auto;
 }
 .maintenance-sec-3 .formulario-mid .p-mid{
   line-height: 21px;
