@@ -35,7 +35,15 @@
 		</nav>
 	</header>
 	<main>
-		<section id="fondocamb" class="index-sec-1" style="background-image: url({% static "images/home-1.jpg" %})">
+		<section class="index-sec-1">
+      <div class="slid-main-top" id="slid-main">
+        <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-1.jpg')"><br><br><br></div>
+        <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-2.jpg')"><br><br><br></div>
+        <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-3.jpg')"><br><br><br></div>
+        <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-4.jpg')"><br><br><br></div>
+        <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-5.jpg')"><br><br><br></div>
+        <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-6.jpg')"><br><br><br></div>
+      </div>
 			<h1>The <b>Enterprise</b> Company</h1>
 			<a href="{% static "Rental_Application.pdf" %}">Rental application <img src="{% static "images/icon.png" %}" alt=""></a>
 		</section>
@@ -67,14 +75,6 @@
 			{% endfor %}
 			</div>
 		{% endif %}
-    <div class="slid-main-top" id="slid-main">
-      <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-1.jpg')"><br><br><br></div>
-      <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-2.jpg')"><br><br><br></div>
-      <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-3.jpg')"><br><br><br></div>
-      <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-4.jpg')"><br><br><br></div>
-      <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-5.jpg')"><br><br><br></div>
-      <div style="background-image: url('http://www.theenterpriseco.com/static/images/home-6.jpg')"><br><br><br></div>
-    </div><br><br><br><br>
 		{% if not departments %}
 			<div class="title-rent-head">
 				<p>There are currently no rentals available. Please check back soon.</p>
