@@ -15,6 +15,7 @@
 	font-size: 72px;
 	font-weight: 300;
 	color: #ffffff;
+	position: relative;
 	line-height: 84px;
 	padding-bottom: 70px;
 }
@@ -23,6 +24,7 @@
 }
 .index-sec-1 a{
 	display: block;
+	position: relative;
 	max-width: 245px;
 	width: 95%;
 	margin: 0 auto;
@@ -45,9 +47,27 @@
 }
 .slid-main-top{
 	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+.slid-main-top .slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.slid-main-top .slick-list .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slid-main-top .slick-list .slick-track .slick-slide{
+	height: 100%;
 }
 .index-sec-2{
 	width: 73.9%;
