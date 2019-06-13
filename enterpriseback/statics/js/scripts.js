@@ -94,6 +94,7 @@ $(document).ready(function(){
 	 $('#slid-main').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
+      autoplay: true,
       arrows: false,
       fade: true,
       asNavFor: '#slid-main2'
