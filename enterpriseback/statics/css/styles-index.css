@@ -66,6 +66,7 @@
     top: 0;
     left: 0;
     display: block;
+		height: 100%;
 }
 .slid-main-top .slick-list .slick-track .slick-slide{
 	height: 100%;
