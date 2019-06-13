@@ -1,4 +1,4 @@
-/* 
+/*
 Plugins y Configuracion de JS
 */
 
@@ -66,7 +66,7 @@ $( function(){
         cambiarImagenFondo(imagenActual, id_contenedor);
     }, tiempo)
 })
- 
+
 function cambiarImagenFondo(nuevaImagen, contenedor){
     var contenedor = $('#' + contenedor);
     //cargar imagen primero
@@ -144,7 +144,7 @@ $(document).ready(function(){
     	}
       });
 });
-	
+
 // Contador para Efectos del Header
 var contador_img = 0;
 $(".responsive-menu").click(function(){
@@ -185,7 +185,7 @@ $(".responsive-menu").click(function(){
             // From jQuery v.1.7.0 use .on() instead of .bind()
             $('.my-button').bind('click', function(e) {
 
-                // Prevents the default action to be triggered. 
+                // Prevents the default action to be triggered.
                 e.preventDefault();
 
                 // Triggering bPopup when click event is fired
@@ -196,7 +196,7 @@ $(".responsive-menu").click(function(){
 
             $('.edit-manager').bind('click', function(e) {
 
-                // Prevents the default action to be triggered. 
+                // Prevents the default action to be triggered.
                 e.preventDefault();
 
                 // Triggering bPopup when click event is fired
@@ -205,7 +205,7 @@ $(".responsive-menu").click(function(){
             });
 
             $('.close-pop').bind('click', function(e) {
-                // Prevents the default action to be triggered. 
+                // Prevents the default action to be triggered.
                 e.preventDefault();
                 // Triggering bPopup when click event is fired
                 $('.manager-remove').bPopup().close();
@@ -230,46 +230,46 @@ document.getElementById("file").onchange = function () {
 
     // read the image file as a data URL.
     reader.readAsDataURL(this.files[0]);
-};
+}
 window.onload = function(){
-        
+
     //Check File API support
     if(window.File && window.FileList && window.FileReader)
     {
 
         var filesInput = document.getElementById("file");
-        
+
         filesInput.addEventListener("change", function(event){
-            
+
             var files = event.target.files; //FileList object
             var output = document.getElementById("result");
-            
+
             for(var i = 0; i< files.length; i++)
             {
                 var file = files[i];
-                
+
                 //Only pics
                 if(!file.type.match('image'))
                   continue;
-                
+
                 var picReader = new FileReader();
-                
+
                 picReader.addEventListener("load",function(event){
-                    
+
                     var picFile = event.target;
 
-                     
+
                      $('.slid-edit-1').slick('slickAdd',"<div style='background-image: url("+ picFile.result +")'></div>");
 
-                    
-                    output.insertBefore(div,null);            
-                
+
+                    output.insertBefore(div,null);
+
                 });
-                
+
                  //Read the image
                 picReader.readAsDataURL(file);
-            }                               
-           
+            }
+
         });
     }
     else
