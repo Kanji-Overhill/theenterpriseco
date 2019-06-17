@@ -231,7 +231,7 @@ document.getElementById("file").onchange = function () {
 
     // read the image file as a data URL.
     reader.readAsDataURL(this.files[0]);
-}
+};
 window.onload = function(){
 
     //Check File API support
