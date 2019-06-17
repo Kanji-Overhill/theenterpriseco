@@ -148,9 +148,6 @@ button + label{
     -webkit-appearance: inherit;
     -moz-appearance: -moz-win-borderless-glass;
 }
-.mix input:checked{
-  max-height: 0;
-}
 .mix input:checked ~ .respuesta{
     max-height: 2000px;
     padding-top: 10px;
